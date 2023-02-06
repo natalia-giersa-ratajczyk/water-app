@@ -6,6 +6,7 @@
   --background-color: #f0f5fa;
   --foreground-color: #2f4858;
   --white-color: #fff;
+  --light-gray-color: #aaa;
 
   --small: 1.4rem;
   --body-2: 1.6rem;
@@ -32,5 +33,4 @@ body {
 
 html {
   font-size: 62.5%;
-  height: 100%;
 }

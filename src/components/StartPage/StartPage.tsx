@@ -19,10 +19,10 @@ const StartPage = () => {
           </div>
           <div className={styles.actions}>
             <Button>
-              <Link href="/home">Zaloguj się</Link>
+              <Link href="/login">Zaloguj się</Link>
             </Button>
             <Button>
-              <Link href="/home">Zarejestruj się</Link>
+              <Link href="/register">Zarejestruj się</Link>
             </Button>
           </div>
         </div>
