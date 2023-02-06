@@ -1,0 +1,5 @@
+.layout {
+  width: 40rem;
+  min-height: 100%;
+  background-color: var(--white-color);
+}

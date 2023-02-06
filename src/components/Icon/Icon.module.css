@@ -1,0 +1,15 @@
+.icon {
+  background-color: var(--accent-light-color);
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+}
+
+.icon svg {
+  height: 2.2rem;
+  width: 2.2rem;
+  color: var(--background-color);
+}
