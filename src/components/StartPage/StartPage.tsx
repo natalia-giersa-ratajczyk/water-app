@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Background from '@/assets/images/start.jpg';
-import Button from '@/components/Button/Button';
+import Button from '@/components/Button';
+import Container from '@/components/Container';
 
-import Container from '../Container';
 import styles from './StartPage.module.css';
 
 const StartPage = () => {

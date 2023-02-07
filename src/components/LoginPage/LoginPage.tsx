@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import Button from '@/components/Button/Button';
-import Container from '@/components/Container/Container';
-import Email from '@/components/Inputs/Email/Email';
-import Password from '@/components/Inputs/Password/Password';
+import Button from '@/components/Button';
+import Container from '@/components/Container';
+import Email from '@/components/Inputs/Email';
+import Password from '@/components/Inputs/Password';
 
 import styles from './LoginPage.module.css';
 

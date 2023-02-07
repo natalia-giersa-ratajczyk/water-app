@@ -1,5 +1,5 @@
 .background {
-  background-color: var(--foreground-color);
+  background-color: var(--accent-color);
 }
 
 .form {

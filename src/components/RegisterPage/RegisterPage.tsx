@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
-import Button from '@/components/Button/Button';
-import Container from '@/components/Container/Container';
-import Email from '@/components/Inputs/Email/Email';
-import Name from '@/components/Inputs/Name/Name';
-import Password from '@/components/Inputs/Password/Password';
+import Button from '@/components/Button';
+import Container from '@/components/Container';
+import Email from '@/components/Inputs/Email';
+import Name from '@/components/Inputs/Name';
+import Password from '@/components/Inputs/Password';
 
 import styles from './RegisterPage.module.css';
 

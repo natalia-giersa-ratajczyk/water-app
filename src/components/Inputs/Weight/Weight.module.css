@@ -1,4 +1,4 @@
-.name-input {
+.wrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -6,22 +6,33 @@
   font-size: var(--body-2);
 }
 
-.name-input input {
+.weight-input {
+  position: relative;
+}
+
+.weight-input input {
   font-family: inherit;
-  padding: 8px 1.6rem;
+  padding: 8px 3.2rem 8px 1.6rem;
   background-color: var(--background-color);
   border-radius: 100px;
   border: none;
-  width: 100%;
-  /* box-shadow: 0 0 4px rgba(0, 0, 0, 0.02), 0 8px 16px rgba(0, 0, 0, 0.2); */
+  width: 50%;
 }
 
-.name-input input::placeholder {
+.weight-input input::placeholder {
   font-family: inherit;
   font-size: inherit;
   color: var(--light-gray-color);
 }
 
-.name-input input:focus {
+.weight-input input:focus {
   outline: none;
+}
+
+.weight {
+  color: var(--foreground-color);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-150%, 25%);
 }

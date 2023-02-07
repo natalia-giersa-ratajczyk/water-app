@@ -1,4 +1,4 @@
-import Header from '@/components/Header/Header';
+import Header from '@/components/Header';
 
 import styles from './Layout.module.css';
 import { LayoutProps } from './Layout.types';
