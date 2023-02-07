@@ -10,7 +10,7 @@
 
 .button > * {
   text-decoration: none;
-  font-size: var(--body-1);
+  font-size: var(--body-2);
   font-weight: 600;
   color: var(--foreground-color);
 }

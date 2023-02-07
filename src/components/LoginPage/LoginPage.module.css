@@ -5,51 +5,17 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2.4rem;
 }
 
 .form h2 {
   font-size: var(--h6);
   color: var(--background-color);
   text-align: center;
-  margin: 4rem 0;
-}
-
-.input-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  color: var(--background-color);
-  font-size: var(--body-2);
-}
-
-.input {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.input input {
-  font-family: inherit;
-  padding: 8px 1.6rem;
-  background-color: var(--background-color);
-  border-radius: 100px;
-  border: none;
-  width: 90%;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.02), 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.input input::placeholder {
-  font-family: inherit;
-  font-size: inherit;
-  color: var(--light-gray-color);
-}
-
-.input input:focus {
-  outline: none;
+  margin: 6.4rem 0 4.8rem;
 }
 
 .button {
-  margin-top: 8rem;
+  margin-top: 6.4rem;
   text-align: center;
 }
