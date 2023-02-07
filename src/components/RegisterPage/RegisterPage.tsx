@@ -3,22 +3,24 @@ import Link from 'next/link';
 import Button from '@/components/Button/Button';
 import Container from '@/components/Container/Container';
 import Email from '@/components/Inputs/Email/Email';
+import Name from '@/components/Inputs/Name/Name';
 import Password from '@/components/Inputs/Password/Password';
 
-import styles from './LoginPage.module.css';
+import styles from './RegisterPage.module.css';
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <div className={styles.background}>
       <Container>
-        <h2 className={styles.title}>Logowanie</h2>
+        <h2 className={styles.title}>Rejestracja</h2>
         <form className={styles.form}>
+          <Name />
           <Email />
           <Password />
         </form>
         <div className={styles.button}>
           <Button>
-            <Link href="/home">Zaloguj się</Link>
+            <Link href="/onboarding">Zarejestruj się</Link>
           </Button>
         </div>
       </Container>
@@ -26,4 +28,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
