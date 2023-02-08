@@ -1,0 +1,66 @@
+.card {
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 2.4rem 2.4rem 4.8rem;
+  color: var(--foreground-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  position: relative;
+}
+
+.card-text {
+  font-size: var(--small);
+  text-transform: uppercase;
+}
+
+.accent-circle {
+  height: 20rem;
+  width: 20rem;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-light-color),
+    var(--accent-light-color-opaque)
+  );
+  border-radius: 50%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--background-color);
+}
+
+.icon svg {
+  color: var(--background-color);
+  height: 3.2rem;
+  width: 3.2rem;
+}
+
+.water-amount {
+  font-size: var(--h4);
+  font-weight: 500;
+}
+
+.water-accent {
+  color: var(--accent-color);
+}
+
+.goal {
+  font-size: var(--small);
+}
+
+.goal span {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.button {
+  all: unset;
+  align-self: center;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+}
