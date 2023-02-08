@@ -1,0 +1,9 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 3.2rem 0;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1.6rem;
+}

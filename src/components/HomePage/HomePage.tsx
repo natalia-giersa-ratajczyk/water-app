@@ -2,6 +2,7 @@ import Card from '@/components/Card';
 import Container from '@/components/Container';
 import Layout from '@/components/Layout';
 
+import RecordsList from '../RecordsList';
 import styles from './HomePage.module.css';
 import { HomeProps } from './HomePage.types';
 
@@ -11,6 +12,7 @@ const HomePage = ({ name }: HomeProps) => {
       <Container>
         <h2 className={styles.greetings}>Witaj, {name}!</h2>
         <Card />
+        <RecordsList />
       </Container>
     </Layout>
   );
