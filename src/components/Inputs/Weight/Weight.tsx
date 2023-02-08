@@ -7,7 +7,7 @@ const Weight = forwardRef<HTMLInputElement>((_, ref) => {
     <div className={styles.wrapper}>
       <label htmlFor="weight">Waga</label>
       <div className={styles['weight-input']}>
-        <input type="number" id="weight" ref={ref} required />
+        <input type="number" id="weight" ref={ref} />
         <span className={styles.weight}>kg</span>
       </div>
     </div>

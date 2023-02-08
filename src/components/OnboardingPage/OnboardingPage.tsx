@@ -54,7 +54,9 @@ const OnboardingPage = () => {
           <Weight />
           <div className={styles.button}>
             <Button>
-              <Link href="/home">Zapisz</Link>
+              <Link href="/home" replace>
+                Zapisz
+              </Link>
             </Button>
           </div>
         </form>

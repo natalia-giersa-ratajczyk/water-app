@@ -8,7 +8,9 @@
   --white-color: #fff;
   --light-gray-color: #777;
 
-  --small: 1.4rem;
+  --button-shadow: 0 4px 2.4rem rgba(0, 0, 0, 0.2);
+
+  --small: 1.2rem;
   --body-2: 1.6rem;
   --body-1: 1.8rem;
   --h6: 2rem;

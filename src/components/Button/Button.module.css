@@ -5,7 +5,7 @@
   background-color: var(--background-color);
   border: none;
   border-radius: 100px;
-  box-shadow: 0 4px 2.4rem rgba(0, 0, 0, 0.2);
+  box-shadow: var(--button-shadow);
 }
 
 .button > * {

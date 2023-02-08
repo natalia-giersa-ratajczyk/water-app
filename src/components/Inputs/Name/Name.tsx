@@ -6,7 +6,7 @@ const Name = forwardRef<HTMLInputElement>((_, ref) => {
   return (
     <div className={styles['name-input']}>
       <label htmlFor="name">Imię</label>
-      <input type="text" id="name" ref={ref} required />
+      <input type="text" id="name" ref={ref} placeholder="Helena" />
     </div>
   );
 });

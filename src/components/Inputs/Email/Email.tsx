@@ -15,7 +15,6 @@ const Email = forwardRef<HTMLInputElement>((_, ref) => {
           id="email"
           placeholder="example@test.com"
           ref={ref}
-          required
         />
       </div>
     </div>
