@@ -12,7 +12,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 4rem;
   color: var(--background-color);
   font-size: var(--body-2);
 }
@@ -26,7 +26,8 @@
 .gender {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-left: 8px;
 }
 
 .button {

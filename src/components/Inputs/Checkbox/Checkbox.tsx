@@ -7,15 +7,17 @@ const Checkbox = ({ id, text, icon, isChecked, onChange }: CheckboxProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.checkbox}>
-        <input
-          type="checkbox"
-          id={id}
-          checked={isChecked}
-          onChange={onChange}
-        />
-        <div className={`${styles.icon} ${checkedStyles}`}>{icon}</div>
+        <label htmlFor={id} className={styles.label}>
+          <input
+            type="checkbox"
+            id={id}
+            checked={isChecked}
+            onChange={onChange}
+          />
+          <div className={`${styles.icon} ${checkedStyles}`}>{icon}</div>
+          <span>{text}</span>
+        </label>
       </div>
-      <label htmlFor={id}>{text}</label>
     </div>
   );
 };
