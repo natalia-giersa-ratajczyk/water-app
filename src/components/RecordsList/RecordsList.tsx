@@ -9,11 +9,14 @@ const DUMMY_LIST = [
 
 const RecordsList = () => {
   return (
-    <ul className={styles.list}>
-      {DUMMY_LIST.map(({ amount, drink, id }) => (
-        <RecordsItem key={id} amount={amount} drink={drink} />
-      ))}
-    </ul>
+    <>
+      <span className={styles.title}>Twoje wpisy</span>
+      <ul className={styles.list}>
+        {DUMMY_LIST.map(({ amount, drink, id }) => (
+          <RecordsItem key={id} amount={amount} drink={drink} />
+        ))}
+      </ul>
+    </>
   );
 };
 

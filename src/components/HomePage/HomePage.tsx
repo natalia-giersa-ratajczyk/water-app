@@ -11,7 +11,7 @@ const HomePage = ({ name }: HomeProps) => {
     <Layout>
       <Container>
         <h2 className={styles.greetings}>Witaj, {name}!</h2>
-        <Card />
+        <Card optimalAmount={2400} amountDrank={1500} />
         <RecordsList />
       </Container>
     </Layout>
