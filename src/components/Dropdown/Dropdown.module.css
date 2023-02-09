@@ -1,0 +1,59 @@
+.edit {
+  all: unset;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-color: var(--background-color);
+  border-radius: 6px;
+  margin-left: auto;
+}
+
+.edit div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit svg {
+  height: 2rem;
+  width: 2rem;
+}
+
+.dropdown {
+  background-color: var(--white-color);
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  border-radius: 8px;
+  margin-top: 8px;
+  box-shadow: 0 2px 1.25rem 0 rgba(47, 72, 88, 0.2);
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+  animation: down 0.4s ease-in-out;
+}
+
+.item {
+  font-size: var(--small);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@keyframes down {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  75% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

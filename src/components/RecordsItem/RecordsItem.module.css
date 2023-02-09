@@ -19,17 +19,3 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
-
-.edit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--background-color);
-  border-radius: 6px;
-  margin-left: auto;
-}
-
-.edit svg {
-  height: 2rem;
-  width: 2rem;
-}
