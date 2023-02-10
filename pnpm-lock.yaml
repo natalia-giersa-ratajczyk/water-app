@@ -17,6 +17,7 @@ specifiers:
   eslint-plugin-prettier: 4.2.1
   eslint-plugin-simple-import-sort: 10.0.0
   next: 13.1.6
+  pocketbase: ^0.10.1
   prettier: 2.8.3
   react: 18.2.0
   react-dom: 18.2.0
@@ -32,6 +33,7 @@ dependencies:
   eslint: 8.33.0
   eslint-config-next: 13.1.6_4vsywjlpuriuw3tl5oq6zy5a64
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
+  pocketbase: 0.10.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
@@ -3931,6 +3933,10 @@ packages:
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
+
+  /pocketbase/0.10.1:
+    resolution: {integrity: sha512-FMBhF+9o2AmdKJYbfz2qunnk4Q5/efYMRcukdQF49UfhsIuaSYl39fSPN1l880bYI4XAvDDeySAjK1MlxrK37A==}
+    dev: false
 
   /postcss/8.4.14:
     resolution: {integrity: sha512-E398TUmfAYFPBSdzgeieK2Y1+1cpdxJx8yXbK/m57nRhKSmk1GB2tO4lbLBtlkfPQTDKfe4Xqv1ASWPpayPEig==}

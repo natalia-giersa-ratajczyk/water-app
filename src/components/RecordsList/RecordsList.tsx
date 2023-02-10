@@ -1,18 +1,25 @@
+import { Record } from 'pocketbase';
+import { useContext, useEffect, useState } from 'react';
+
 import RecordsItem from '@/components/RecordsItem';
+import { AppContext } from '@/context/context';
 
 import styles from './RecordsList.module.css';
 
-const DUMMY_LIST = [
-  { amount: 300, drink: 'woda', id: 1 },
-  { amount: 250, drink: 'herbata', id: 2 },
-];
-
 const RecordsList = () => {
+  const { records } = useContext(AppContext);
+
+  const [recordsList, setRecordsList] = useState<Record[]>([]);
+
+  useEffect(() => {
+    setRecordsList(records);
+  }, [records]);
+
   return (
     <>
       <span className={styles.title}>Twoje wpisy</span>
       <ul className={styles.list}>
-        {DUMMY_LIST.map(({ amount, drink, id }) => (
+        {recordsList.map(({ amount, drink, id }) => (
           <RecordsItem key={id} amount={amount} drink={drink} />
         ))}
       </ul>
