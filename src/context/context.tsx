@@ -5,34 +5,59 @@ import { AppContextProps, AppContextProviderProps } from './context.types';
 
 export const AppContext = createContext<AppContextProps>({
   records: [],
-  usernames: [],
+  loginHandler: () => Promise.resolve({ token: '', record: {} as Record }),
+  isUserValid: () => false,
+  getCurrentUser: () => null,
 });
 
 const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [records, setRecords] = useState<Record[]>([]);
-  const [usernames, setUsernames] = useState<Record[]>([]);
 
   useEffect(() => {
     const pb = new PocketBase('http://127.0.0.1:8090');
 
     const getRecords = async () => {
-      const records = await pb
-        .collection('records')
-        .getFullList(200, { sort: '-created' });
+      const currentUser = getCurrentUser();
+
+      const records = await pb.collection('records').getFullList(200, {
+        sort: '-created',
+        filter: `userId='${currentUser?.id}'`,
+      });
+
       setRecords(records);
     };
 
-    const getUsernames = async () => {
-      const usernames = await pb.collection('users').getFullList(200);
-      setUsernames(usernames);
-    };
-
     getRecords();
-    getUsernames();
   }, []);
 
+  const loginHandler = async (email: string, password: string) => {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+
+    const authData = await pb
+      .collection('users')
+      .authWithPassword(email, password);
+
+    console.log(pb.authStore);
+
+    return authData;
+  };
+
+  const isUserValid = () => {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+
+    return pb.authStore.isValid;
+  };
+
+  const getCurrentUser = () => {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+
+    return pb.authStore.model;
+  };
+
   return (
-    <AppContext.Provider value={{ records, usernames }}>
+    <AppContext.Provider
+      value={{ records, loginHandler, isUserValid, getCurrentUser }}
+    >
       {children}
     </AppContext.Provider>
   );

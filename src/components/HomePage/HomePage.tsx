@@ -1,3 +1,4 @@
+import { Admin, Record } from 'pocketbase';
 import { useContext, useEffect, useState } from 'react';
 
 import Card from '@/components/Card';
@@ -9,13 +10,17 @@ import RecordsList from '../RecordsList';
 import styles from './HomePage.module.css';
 
 const HomePage = () => {
-  const { records, usernames } = useContext(AppContext);
+  const { records, getCurrentUser } = useContext(AppContext);
 
   const [amountDrank, setAmountDrank] = useState(0);
   const [amounts, setAmounts] = useState<number[]>([]);
   const [optimalAmount, setOptimalAmount] = useState(0);
-  const [username, setUsername] = useState('');
-  const [userweight, setUserweight] = useState(0);
+  const [currentUser, setCurrentUser] = useState<Record | Admin | null>(null);
+
+  useEffect(() => {
+    const amountArray = records.map((record) => record.amount);
+    setAmounts(amountArray);
+  }, [records]);
 
   useEffect(() => {
     setAmountDrank(
@@ -27,29 +32,21 @@ const HomePage = () => {
   }, [amounts]);
 
   useEffect(() => {
-    const amountArray = records.map((record) => record.amount);
-    setAmounts(amountArray);
-  }, [records]);
+    if (getCurrentUser() === null) {
+      return;
+    }
 
-  console.log(username);
-
-  useEffect(() => {
-    setUsername(
-      usernames.find((username) => username.id === 'xac58sk75kwapm8')?.username
-    );
-    setUserweight(
-      usernames.find((username) => username.id === 'xac58sk75kwapm8')?.weight
-    );
-  }, [usernames]);
+    setCurrentUser(getCurrentUser());
+  }, [getCurrentUser]);
 
   useEffect(() => {
-    setOptimalAmount(userweight * 0.03 * 1000);
-  }, [userweight]);
+    setOptimalAmount(currentUser?.weight * 0.03 * 1000);
+  }, [currentUser]);
 
   return (
     <Layout>
       <Container>
-        <h2 className={styles.greetings}>Witaj, {username}!</h2>
+        <h2 className={styles.greetings}>Witaj, {currentUser?.username}!</h2>
         <Card optimalAmount={optimalAmount} amountDrank={amountDrank} />
         <RecordsList />
       </Container>

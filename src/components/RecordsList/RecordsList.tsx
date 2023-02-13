@@ -19,9 +19,15 @@ const RecordsList = () => {
     <>
       <span className={styles.title}>Twoje wpisy</span>
       <ul className={styles.list}>
-        {recordsList.map(({ amount, drink, id }) => (
-          <RecordsItem key={id} amount={amount} drink={drink} />
-        ))}
+        {records.length === 0 ? (
+          <p className={styles.text}>
+            Nic tu jeszcze nie ma. Nalej sobie szklankę wody :)
+          </p>
+        ) : (
+          recordsList.map(({ amount, drink, id }) => (
+            <RecordsItem key={id} amount={amount} drink={drink} />
+          ))
+        )}
       </ul>
     </>
   );

@@ -11,7 +11,7 @@ import styles from './RegisterPage.module.css';
 const RegisterPage = () => {
   return (
     <div className={styles.background}>
-      <Container>
+      <Container isFullHeight>
         <h2 className={styles.title}>Rejestracja</h2>
         <form className={styles.form}>
           <Name />

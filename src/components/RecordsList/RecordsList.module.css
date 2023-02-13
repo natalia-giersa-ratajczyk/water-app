@@ -16,3 +16,7 @@
   border-radius: 8px;
   padding: 1.6rem;
 }
+
+.text {
+  font-size: var(--small);
+}

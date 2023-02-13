@@ -26,7 +26,7 @@ const OnboardingPage = () => {
 
   return (
     <div className={styles.background}>
-      <Container>
+      <Container isFullHeight>
         <p className={styles.text}>
           Podaj nam kilka informacji o sobie, żebyśmy mogli wyliczyć Twoje
           dzienne zapotrzebowanie na wodę
