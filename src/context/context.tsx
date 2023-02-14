@@ -33,12 +33,13 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const loginHandler = async (email: string, password: string) => {
     const pb = new PocketBase('http://127.0.0.1:8090');
 
+    pb.authStore.clear();
+
     const authData = await pb
       .collection('users')
       .authWithPassword(email, password);
 
-    console.log(pb.authStore);
-
+    // console.log(authData);
     return authData;
   };
 

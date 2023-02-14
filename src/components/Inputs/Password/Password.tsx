@@ -25,6 +25,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
           <input
             type={passwordVisible ? 'text' : 'password'}
             id="password"
+            name="password"
             ref={ref}
             onChange={onChange}
           />

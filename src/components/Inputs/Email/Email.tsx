@@ -14,6 +14,7 @@ const Email = forwardRef<HTMLInputElement, EmailProps>(({ onChange }, ref) => {
         <input
           type="email"
           id="email"
+          name="email"
           placeholder="example@test.com"
           ref={ref}
           onChange={onChange}

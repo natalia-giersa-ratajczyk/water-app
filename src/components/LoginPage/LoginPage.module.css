@@ -16,6 +16,21 @@
 }
 
 .button {
-  margin-top: 6.4rem;
+  margin-top: 4rem;
   text-align: center;
+}
+
+.message {
+  color: var(--red-color);
+  font-size: var(--small);
+  font-family: inherit;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.message svg {
+  height: 1.8rem;
+  width: 1.8rem;
 }
