@@ -6,8 +6,10 @@ import { AppContextProps, AppContextProviderProps } from './context.types';
 export const AppContext = createContext<AppContextProps>({
   records: [],
   loginHandler: () => Promise.resolve({ token: '', record: {} as Record }),
+  registerHandler: () => Promise.resolve({} as Record),
   isUserValid: () => false,
   getCurrentUser: () => null,
+  doesUserExist: () => Promise.resolve(false),
 });
 
 const AppContextProvider = ({ children }: AppContextProviderProps) => {
@@ -39,8 +41,27 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
       .collection('users')
       .authWithPassword(email, password);
 
-    // console.log(authData);
     return authData;
+  };
+
+  const registerHandler = async (
+    name: string,
+    email: string,
+    password: string,
+    confirmedPassword: string
+  ) => {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+
+    const data = {
+      username: name,
+      email: email,
+      password: password,
+      passwordConfirm: confirmedPassword,
+    };
+
+    const newUser = await pb.collection('users').create(data);
+
+    return newUser;
   };
 
   const isUserValid = () => {
@@ -55,9 +76,28 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     return pb.authStore.model;
   };
 
+  const doesUserExist = async (email: string) => {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+
+    const user = await pb
+      .collection('users')
+      .getFullList(200, { filter: `email='${email}'` });
+
+    console.log(user);
+
+    return user.length !== 0;
+  };
+
   return (
     <AppContext.Provider
-      value={{ records, loginHandler, isUserValid, getCurrentUser }}
+      value={{
+        records,
+        loginHandler,
+        isUserValid,
+        getCurrentUser,
+        registerHandler,
+        doesUserExist,
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -1,12 +1,25 @@
 import { forwardRef } from 'react';
 
-import styles from './Name.module.css';
+import Emoji from '@/assets/icons/Emoji.svg';
 
-const Name = forwardRef<HTMLInputElement>((_, ref) => {
+import styles from './Name.module.css';
+import { NameProps } from './Name.types';
+
+const Name = forwardRef<HTMLInputElement, NameProps>(({ onChange }, ref) => {
   return (
-    <div className={styles['name-input']}>
+    <div className={styles.wrapper}>
       <label htmlFor="name">Imię</label>
-      <input type="text" id="name" ref={ref} placeholder="Helena" />
+      <div className={styles['name-input']}>
+        <Emoji className={styles.icon} />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          ref={ref}
+          onChange={onChange}
+          placeholder="Helena"
+        />
+      </div>
     </div>
   );
 });

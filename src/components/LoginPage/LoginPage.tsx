@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast, { Toaster } from 'react-hot-toast';
 import { z } from 'zod';
 
 import Error from '@/assets/icons/Error.svg';
@@ -27,33 +28,34 @@ const userSchema = z.object({
 
 type userSchema = z.infer<typeof userSchema>;
 
+const notify = () =>
+  toast.error('Nieprawidłowy email lub hasło.', {
+    position: 'bottom-center',
+    style: { backgroundColor: '#fff', color: '#ff8a8b', fontSize: '1.2rem' },
+  });
+
 const LoginPage = () => {
   const { loginHandler, isUserValid } = useContext(AppContext);
   const [hasError, setHasError] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
   const {
     register,
-    formState: { errors, dirtyFields, isSubmitting, isSubmitted },
+    formState: { errors },
     handleSubmit,
   } = useForm<LoginPageForm>({
     resolver: zodResolver(userSchema),
   });
 
-  useEffect(() => {
-    console.log(dirtyFields);
-  }, [dirtyFields]);
-
-  // TODO: Fix this shit.
   const submitHandler = async ({ email, password }: LoginPageForm) => {
     try {
-      // setIsLoading(true);
+      setIsLoading(true);
       await loginHandler(email, password);
     } catch (error) {
       setHasError(error !== null);
-      // setIsLoading(false);
+      setIsLoading(false);
     }
 
     if (!isUserValid()) {
@@ -63,36 +65,37 @@ const LoginPage = () => {
     router.replace('/home');
   };
 
+  useEffect(() => {
+    if (hasError) {
+      notify();
+    }
+  }, [hasError]);
+
   return (
     <div className={styles.background}>
       <Container isFullHeight>
         <h2 className={styles.title}>Logowanie</h2>
         <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
-          <Email {...register('email', { required: true })} />
-          <p className={styles.message}>
-            {errors.email && <Error />}
-            {errors.email?.message}
-          </p>
-          <Password {...register('password', { required: true })} />
-          <p className={styles.message}>
-            {errors.password && <Error />}
-            {errors.password?.message}
-          </p>
+          <div className={styles['message-wrapper']}>
+            <Email {...register('email', { required: true })} />
+            <p className={styles.message}>
+              {errors.email && <Error />}
+              {errors.email?.message}
+            </p>
+          </div>
+          <div className={styles['message-wrapper']}>
+            <Password {...register('password', { required: true })} />
+            <p className={styles.message}>
+              {errors.password && <Error />}
+              {errors.password?.message}
+            </p>
+          </div>
           <div className={styles.button}>
             <Button onClick={handleSubmit(submitHandler)}>
-              <span>
-                {isSubmitting || isSubmitted ? 'Logowanie...' : 'Zaloguj się'}
-              </span>
+              <span>{isLoading ? 'Logowanie...' : 'Zaloguj się'}</span>
             </Button>
           </div>
-          <div>
-            {hasError && (
-              <div className={styles.message}>
-                <Error />
-                <p>Nieprawidłowy email lub hasło.</p>
-              </div>
-            )}
-          </div>
+          <div></div>
         </form>
       </Container>
     </div>
