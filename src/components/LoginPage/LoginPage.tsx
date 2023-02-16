@@ -32,6 +32,7 @@ const notify = () =>
   toast.error('Nieprawidłowy email lub hasło.', {
     position: 'bottom-center',
     style: { backgroundColor: '#fff', color: '#ff8a8b', fontSize: '1.2rem' },
+    duration: 3000,
   });
 
 const LoginPage = () => {
@@ -51,10 +52,12 @@ const LoginPage = () => {
 
   const submitHandler = async ({ email, password }: LoginPageForm) => {
     try {
+      setHasError(false);
       setIsLoading(true);
+
       await loginHandler(email, password);
     } catch (error) {
-      setHasError(error !== null);
+      setHasError(true);
       setIsLoading(false);
     }
 
@@ -95,7 +98,7 @@ const LoginPage = () => {
               <span>{isLoading ? 'Logowanie...' : 'Zaloguj się'}</span>
             </Button>
           </div>
-          <div></div>
+          {hasError && <Toaster />}
         </form>
       </Container>
     </div>

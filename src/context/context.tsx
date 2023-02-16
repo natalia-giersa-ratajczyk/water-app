@@ -9,7 +9,7 @@ export const AppContext = createContext<AppContextProps>({
   registerHandler: () => Promise.resolve({} as Record),
   isUserValid: () => false,
   getCurrentUser: () => null,
-  doesUserExist: () => Promise.resolve(false),
+  existingUsers: () => Promise.resolve([]),
 });
 
 const AppContextProvider = ({ children }: AppContextProviderProps) => {
@@ -57,6 +57,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
       email: email,
       password: password,
       passwordConfirm: confirmedPassword,
+      emailVisibility: true,
     };
 
     const newUser = await pb.collection('users').create(data);
@@ -76,16 +77,14 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     return pb.authStore.model;
   };
 
-  const doesUserExist = async (email: string) => {
+  const existingUsers = async () => {
     const pb = new PocketBase('http://127.0.0.1:8090');
 
-    const user = await pb
-      .collection('users')
-      .getFullList(200, { filter: `email='${email}'` });
+    const users = await pb.collection('users').getFullList(200);
 
-    console.log(user);
+    console.log(users);
 
-    return user.length !== 0;
+    return users;
   };
 
   return (
@@ -96,7 +95,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         isUserValid,
         getCurrentUser,
         registerHandler,
-        doesUserExist,
+        existingUsers,
       }}
     >
       {children}

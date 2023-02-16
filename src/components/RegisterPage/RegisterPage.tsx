@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import { z } from 'zod';
@@ -44,7 +44,10 @@ const notify = () =>
   });
 
 const RegisterPage = () => {
-  const { registerHandler, doesUserExist } = useContext(AppContext);
+  const { registerHandler, existingUsers, isUserValid } =
+    useContext(AppContext);
+  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
@@ -62,21 +65,38 @@ const RegisterPage = () => {
     password,
     confirmedPassword,
   }: RegisterPageForm) => {
-    const userExist = await doesUserExist(email);
+    setHasError(false);
+    setIsLoading(true);
+
+    const users = await existingUsers();
+    const usersArray = users.filter((user) => user.email === email);
+    console.log(usersArray);
 
     try {
-      if (userExist) {
-        notify();
+      if (usersArray.length !== 0) {
+        setHasError(true);
+        setIsLoading(false);
         return;
       }
 
       await registerHandler(name, email, password, confirmedPassword);
     } catch (error) {
-      console.log(error);
+      setHasError(true);
+      setIsLoading(false);
     }
+
+    // if (!isUserValid()) {
+    //   return;
+    // }
 
     router.replace('/login');
   };
+
+  useEffect(() => {
+    if (hasError) {
+      notify();
+    }
+  }, [hasError]);
 
   return (
     <div className={styles.background}>
@@ -113,11 +133,11 @@ const RegisterPage = () => {
           </div>
           <div className={styles.button}>
             <Button onClick={handleSubmit(submitHandler)}>
-              <span>Zarejestruj się</span>
+              <span>{isLoading ? 'Rejestracja...' : 'Zarejestruj się'}</span>
             </Button>
           </div>
         </form>
-        <Toaster />
+        {hasError && <Toaster />}
       </Container>
     </div>
   );

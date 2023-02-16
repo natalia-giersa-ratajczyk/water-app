@@ -15,7 +15,7 @@ export type AppContextProps = {
   ) => Promise<Record>;
   isUserValid: () => boolean;
   getCurrentUser: () => Record | Admin | null;
-  doesUserExist: (email: string) => Promise<boolean>;
+  existingUsers: () => Promise<Record[]>;
 };
 
 export type AppContextProviderProps = {
