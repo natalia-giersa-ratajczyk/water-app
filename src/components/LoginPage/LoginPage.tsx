@@ -31,12 +31,17 @@ type userSchema = z.infer<typeof userSchema>;
 const notify = () =>
   toast.error('Nieprawidłowy email lub hasło.', {
     position: 'bottom-center',
-    style: { backgroundColor: '#fff', color: '#ff8a8b', fontSize: '1.2rem' },
-    duration: 3000,
+    style: {
+      backgroundColor: 'var(--white-color)',
+      color: 'var(--red-color)',
+      fontSize: '1.2rem',
+    },
+    id: 'error',
+    duration: 2000,
   });
 
 const LoginPage = () => {
-  const { loginHandler, isUserValid } = useContext(AppContext);
+  const { loginHandler, isUserValid, getCurrentUser } = useContext(AppContext);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -62,6 +67,13 @@ const LoginPage = () => {
     }
 
     if (!isUserValid()) {
+      return;
+    }
+
+    const currentUser = getCurrentUser();
+
+    if (currentUser?.weight === 0) {
+      router.replace('/onboarding');
       return;
     }
 

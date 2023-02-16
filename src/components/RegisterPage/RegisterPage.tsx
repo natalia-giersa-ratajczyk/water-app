@@ -40,12 +40,17 @@ type newUserSchema = z.infer<typeof newUserSchema>;
 const notify = () =>
   toast.error('Podany email istnieje już w bazie.', {
     position: 'bottom-center',
-    style: { backgroundColor: '#fff', color: '#ff8a8b', fontSize: '1.2rem' },
+    style: {
+      backgroundColor: 'var(--white-color)',
+      color: 'var(--red-color)',
+      fontSize: '1.2rem',
+    },
+    id: 'error',
+    duration: 2000,
   });
 
 const RegisterPage = () => {
-  const { registerHandler, existingUsers, isUserValid } =
-    useContext(AppContext);
+  const { registerHandler, existingUsers } = useContext(AppContext);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -70,7 +75,6 @@ const RegisterPage = () => {
 
     const users = await existingUsers();
     const usersArray = users.filter((user) => user.email === email);
-    console.log(usersArray);
 
     try {
       if (usersArray.length !== 0) {
@@ -84,10 +88,6 @@ const RegisterPage = () => {
       setHasError(true);
       setIsLoading(false);
     }
-
-    // if (!isUserValid()) {
-    //   return;
-    // }
 
     router.replace('/login');
   };

@@ -16,6 +16,12 @@ export type AppContextProps = {
   isUserValid: () => boolean;
   getCurrentUser: () => Record | Admin | null;
   existingUsers: () => Promise<Record[]>;
+  updateUserData: (
+    id: string,
+    gender: string,
+    weight: number
+  ) => Promise<Record>;
+  logoutHandler: () => void;
 };
 
 export type AppContextProviderProps = {

@@ -11,6 +11,7 @@ const Checkbox = ({ id, text, icon, isChecked, onChange }: CheckboxProps) => {
           <input
             type="checkbox"
             id={id}
+            name={id}
             checked={isChecked}
             onChange={onChange}
           />

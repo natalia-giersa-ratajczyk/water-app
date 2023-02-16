@@ -10,6 +10,8 @@ export const AppContext = createContext<AppContextProps>({
   isUserValid: () => false,
   getCurrentUser: () => null,
   existingUsers: () => Promise.resolve([]),
+  updateUserData: () => Promise.resolve({} as Record),
+  logoutHandler: () => {},
 });
 
 const AppContextProvider = ({ children }: AppContextProviderProps) => {
@@ -34,8 +36,6 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
   const loginHandler = async (email: string, password: string) => {
     const pb = new PocketBase('http://127.0.0.1:8090');
-
-    pb.authStore.clear();
 
     const authData = await pb
       .collection('users')
@@ -82,9 +82,26 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
     const users = await pb.collection('users').getFullList(200);
 
-    console.log(users);
-
     return users;
+  };
+
+  const updateUserData = async (id: string, gender: string, weight: number) => {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+
+    const data = {
+      gender: gender,
+      weight: weight,
+    };
+
+    const updatedData = await pb.collection('users').update(id, data);
+
+    return updatedData;
+  };
+
+  const logoutHandler = () => {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+
+    return pb.authStore.clear();
   };
 
   return (
@@ -96,6 +113,8 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         getCurrentUser,
         registerHandler,
         existingUsers,
+        updateUserData,
+        logoutHandler,
       }}
     >
       {children}
