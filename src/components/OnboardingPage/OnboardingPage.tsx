@@ -5,32 +5,28 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import Error from '@/assets/icons/Error.svg';
-import Female from '@/assets/icons/Female.svg';
-import Male from '@/assets/icons/Male.svg';
 import Button from '@/components/Button';
 import Container from '@/components/Container/Container';
-import Checkbox from '@/components/Inputs/Checkbox';
+import FemaleCheckbox from '@/components/Inputs/FemaleCheckbox';
+import MaleCheckbox from '@/components/Inputs/MaleCheckbox';
 import Weight from '@/components/Inputs/Weight';
 import { AppContext } from '@/context/context';
 
 import styles from './OnboardingPage.module.css';
 import { OnboardingPageForm } from './OnboardingPage.types';
 
-const userDataSchema = z.object({
-  // gender: z.union([z.literal(true), z.literal(false)], {
-  //   required_error: 'Płeć jest wymagana',
-  // }),
-  weight: z.string().min(1, { message: 'Waga jest wymagana' }),
-});
-
-type userDataSchema = z.infer<typeof userDataSchema>;
-
 const OnboardingPage = () => {
   const { updateUserData, getCurrentUser } = useContext(AppContext);
-  const [isCheckedFemale, setIsCheckedFemale] = useState(false);
-  const [isCheckedMale, setIsCheckedMale] = useState(false);
+  const [gender, setGender] = useState<null | boolean>(null);
 
   const router = useRouter();
+
+  const userDataSchema = z.object({
+    weight: z.string().min(1, { message: 'Waga jest wymagana' }),
+    gender: z.string().min(1),
+  });
+
+  type userDataSchema = z.infer<typeof userDataSchema>;
 
   const {
     register,
@@ -40,19 +36,7 @@ const OnboardingPage = () => {
     resolver: zodResolver(userDataSchema),
   });
 
-  const isFemaleHandler = () => {
-    setIsCheckedFemale(true);
-    setIsCheckedMale(false);
-  };
-
-  const isMaleHandler = () => {
-    setIsCheckedMale(true);
-    setIsCheckedFemale(false);
-  };
-
-  const gender = isCheckedFemale ? 'female' : 'male';
-
-  const submitHandler = ({ weight }: OnboardingPageForm) => {
+  const submitHandler = ({ weight, gender }: OnboardingPageForm) => {
     const currentUser = getCurrentUser();
     const currentUserId = currentUser?.id ?? '';
     updateUserData(currentUserId, gender, weight);
@@ -65,33 +49,27 @@ const OnboardingPage = () => {
       <Container isFullHeight>
         <p className={styles.text}>
           Podaj nam kilka informacji o sobie, żebyśmy mogli wyliczyć Twoje
-          dzienne zapotrzebowanie na wodę
+          dzienne minimalne zapotrzebowanie na wodę
         </p>
         <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
           <div className={styles.wrapper}>
             <span>Płeć</span>
             <div className={styles.gender}>
-              <Checkbox
-                id="female"
-                text="Kobieta"
-                icon={<Female />}
-                isChecked={isCheckedFemale}
-                // onChange={isFemaleHandler}
-                {...(register('gender', {
-                  required: true,
-                }),
-                { onChange: isFemaleHandler })}
+              <FemaleCheckbox
+                {...register('gender')}
+                isChecked={gender !== null && !gender}
+                onChange={(event) => {
+                  register('gender').onChange(event);
+                  setGender(false);
+                }}
               />
-              <Checkbox
-                id="male"
-                text="Mężczyzna"
-                icon={<Male />}
-                isChecked={isCheckedMale}
-                // onChange={isMaleHandler}
-                {...(register('gender', {
-                  required: true,
-                }),
-                { onChange: isMaleHandler })}
+              <MaleCheckbox
+                {...register('gender')}
+                isChecked={gender !== null && gender}
+                onChange={(event) => {
+                  register('gender').onChange(event);
+                  setGender(true);
+                }}
               />
               <p className={styles.message}>
                 {errors.gender && <Error />}

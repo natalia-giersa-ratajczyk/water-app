@@ -1,0 +1,43 @@
+.background {
+  background-image: var(--background-gradient);
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3.2rem;
+  height: 100%;
+}
+
+.title {
+  color: var(--background-color);
+  font-size: var(--h4);
+}
+
+.icon {
+  height: 30rem;
+  width: 30rem;
+}
+
+.drop {
+  animation: drop 2s ease-in-out infinite;
+}
+
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(5.5rem);
+    opacity: 0;
+  }
+}

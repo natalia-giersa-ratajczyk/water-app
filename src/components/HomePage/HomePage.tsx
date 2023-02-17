@@ -9,6 +9,7 @@ import { AppContext } from '@/context/context';
 
 import RecordsList from '../RecordsList';
 import styles from './HomePage.module.css';
+// import { HomePageProps } from './HomePage.types';
 
 const HomePage = () => {
   const { records, getCurrentUser, logoutHandler } = useContext(AppContext);
@@ -19,6 +20,14 @@ const HomePage = () => {
   const [amounts, setAmounts] = useState<number[]>([]);
   const [optimalAmount, setOptimalAmount] = useState(0);
   const [currentUser, setCurrentUser] = useState<Record | Admin | null>(null);
+
+  useEffect(() => {
+    if (getCurrentUser() === null) {
+      return;
+    }
+
+    setCurrentUser(getCurrentUser());
+  }, [getCurrentUser]);
 
   useEffect(() => {
     const amountArray = records.map((record) => record.amount);
@@ -34,17 +43,18 @@ const HomePage = () => {
     );
   }, [amounts]);
 
-  useEffect(() => {
-    if (getCurrentUser() === null) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (currentUser === null) {
+  //     router.replace('/');
+  //     return;
+  //   }
+  // }, [currentUser, router]);
 
-    setCurrentUser(getCurrentUser());
-  }, [getCurrentUser]);
-
   useEffect(() => {
-    setOptimalAmount(currentUser?.weight * 0.03 * 1000);
+    setOptimalAmount(Math.round(currentUser?.weight * 0.03 * 1000));
   }, [currentUser]);
+
+  console.log(currentUser?.weight);
 
   const clickHandler = () => {
     logoutHandler();

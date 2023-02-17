@@ -14,7 +14,7 @@ const StartPage = () => {
           <RefreshingPana className={styles.image} />
           <div className={styles.text}>
             <h1>Witaj w aplikacji Nawodnij się!</h1>
-            <p>Aplikacja pomoże Ci zadbać o poziom Twojego nawodnienia.</p>
+            <p>Aplikacja pomoże Ci monitorować Twój poziom nawodnienia.</p>
           </div>
           <div className={styles.actions}>
             <Button>

@@ -1,0 +1,43 @@
+.wrapper {
+  font-size: var(--body-2);
+  color: var(--background-color);
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.checkbox {
+  position: relative;
+}
+
+.checkbox input:checked + .icon div {
+  background-color: var(--foreground-color);
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-25%, -25%);
+  background-color: var(--accent-light-color);
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.4s;
+}
+
+.icon svg {
+  height: 2.2rem;
+  width: 2.2rem;
+  color: var(--background-color);
+}
+
+.icon.checked {
+  background-color: var(--foreground-color);
+}
+
+.label span {
+  margin-left: 2.4rem;
+}

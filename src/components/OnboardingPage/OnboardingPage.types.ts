@@ -1,5 +1,5 @@
 export type OnboardingPageForm = {
   id: string;
-  gender: 'male' | 'female';
+  gender: 'female' | 'male';
   weight: number;
 };
