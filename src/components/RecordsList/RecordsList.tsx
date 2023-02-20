@@ -1,18 +1,24 @@
+// import { Record } from 'pocketbase';
 import { Record } from 'pocketbase';
 import { useContext, useEffect, useState } from 'react';
 
 import EmptyRecordsList from '@/assets/images/empty-records-list.svg';
 import RecordsItem from '@/components/RecordsItem';
-import { AppContext } from '@/context/context';
 
+// import { AppContext } from '@/context/context';
 import styles from './RecordsList.module.css';
+import { RecordsListProps } from './RecordsList.types';
 
-const RecordsList = () => {
-  const { records } = useContext(AppContext);
+const RecordsList = ({ records }: RecordsListProps) => {
+  // const { records } = useContext(AppContext);
 
   const [recordsList, setRecordsList] = useState<Record[]>([]);
 
   useEffect(() => {
+    if (typeof records === 'undefined') {
+      return;
+    }
+
     setRecordsList(records);
   }, [records]);
 
@@ -20,7 +26,7 @@ const RecordsList = () => {
     <>
       <span className={styles.title}>Twoje wpisy</span>
       <ul className={styles.list}>
-        {records.length === 0 ? (
+        {recordsList.length === 0 ? (
           <div className={styles['empty-records']}>
             <EmptyRecordsList className={styles.icon} />
             <p className={styles.text}>

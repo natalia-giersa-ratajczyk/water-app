@@ -22,6 +22,7 @@ export type AppContextProps = {
     weight: number
   ) => Promise<Record>;
   logoutHandler: () => void;
+  createNewRecord: (drink: string, amount: number) => Promise<Record>;
 };
 
 export type AppContextProviderProps = {

@@ -12,6 +12,7 @@ export const AppContext = createContext<AppContextProps>({
   existingUsers: () => Promise.resolve([]),
   updateUserData: () => Promise.resolve({} as Record),
   logoutHandler: () => {},
+  createNewRecord: () => Promise.resolve({} as Record),
 });
 
 const AppContextProvider = ({ children }: AppContextProviderProps) => {
@@ -33,6 +34,21 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
     getRecords();
   }, []);
+
+  const createNewRecord = async (drink: string, amount: number) => {
+    const pb = new PocketBase('http://127.0.0.1:8090');
+
+    const currentUser = getCurrentUser();
+
+    const data = {
+      drink: drink,
+      amount: amount,
+      userId: currentUser?.id,
+    };
+
+    const record = await pb.collection('records').create(data);
+    return record;
+  };
 
   const loginHandler = async (email: string, password: string) => {
     const pb = new PocketBase('http://127.0.0.1:8090');
@@ -115,6 +131,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
         existingUsers,
         updateUserData,
         logoutHandler,
+        createNewRecord,
       }}
     >
       {children}

@@ -1,5 +1,7 @@
-import { Admin, Record } from 'pocketbase';
+// import { Admin, Record } from 'pocketbase';
+
+import { Record } from 'pocketbase';
 
 export type HomePageProps = {
-  currentUser: Record | Admin | null;
+  records: Record[];
 };

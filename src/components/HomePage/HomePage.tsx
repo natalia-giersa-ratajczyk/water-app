@@ -9,10 +9,11 @@ import { AppContext } from '@/context/context';
 
 import RecordsList from '../RecordsList';
 import styles from './HomePage.module.css';
+import { HomePageProps } from './HomePage.types';
 // import { HomePageProps } from './HomePage.types';
 
-const HomePage = () => {
-  const { records, getCurrentUser, logoutHandler } = useContext(AppContext);
+const HomePage = ({ records }: HomePageProps) => {
+  const { getCurrentUser, logoutHandler } = useContext(AppContext);
 
   const router = useRouter();
 
@@ -30,6 +31,10 @@ const HomePage = () => {
   }, [getCurrentUser]);
 
   useEffect(() => {
+    if (typeof records === 'undefined') {
+      return;
+    }
+
     const amountArray = records.map((record) => record.amount);
     setAmounts(amountArray);
   }, [records]);
@@ -54,8 +59,6 @@ const HomePage = () => {
     setOptimalAmount(Math.round(currentUser?.weight * 0.03 * 1000));
   }, [currentUser]);
 
-  console.log(currentUser?.weight);
-
   const clickHandler = () => {
     logoutHandler();
 
@@ -67,7 +70,7 @@ const HomePage = () => {
       <Container>
         <h2 className={styles.greetings}>Witaj, {currentUser?.username}!</h2>
         <Card optimalAmount={optimalAmount} amountDrank={amountDrank} />
-        <RecordsList />
+        <RecordsList records={records} />
         <button onClick={clickHandler}>
           <span>Wyloguj się</span>
         </button>

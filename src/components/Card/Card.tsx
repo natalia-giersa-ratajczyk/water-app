@@ -6,6 +6,7 @@ import Heart from '@/assets/icons/Heart.svg';
 import Plus from '@/assets/icons/Plus.svg';
 import Trophy from '@/assets/icons/Trophy.svg';
 import Icon from '@/components/Icon';
+import Modal from '@/components/Modal';
 
 import styles from './Card.module.css';
 import { CardProps } from './Card.types';
@@ -40,11 +41,15 @@ const Card = ({ amountDrank, optimalAmount }: CardProps) => {
           Osiągnięto <span>{percentage}%</span> celu
         </p>
       </div>
-      <button className={styles.button} onClick={() => console.log('click')}>
-        <Icon>
-          <Plus />
-        </Icon>
-      </button>
+      <Modal
+        trigger={
+          <button className={styles.button}>
+            <Icon>
+              <Plus />
+            </Icon>
+          </button>
+        }
+      />
     </div>
   );
 };
