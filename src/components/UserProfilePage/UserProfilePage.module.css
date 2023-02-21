@@ -1,0 +1,42 @@
+.edit-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2.4rem 0;
+}
+
+.edit {
+  font-size: var(--small);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  border-radius: 8px;
+  padding: 1.2rem 2.4rem;
+}
+
+.title {
+  font-size: var(--body-1);
+  color: var(--accent-color);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1.6rem;
+}
+
+.button {
+  all: unset;
+  height: 4.4rem;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  padding: 0 2.4rem;
+  text-align: center;
+  font-size: var(--body-2);
+  font-weight: 600;
+  border-radius: 10rem;
+}

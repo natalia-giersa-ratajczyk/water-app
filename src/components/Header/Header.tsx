@@ -20,7 +20,7 @@ const Header = () => {
       </div>
       <nav className={styles.navigation}>
         <Link
-          href="/"
+          href="/home"
           className={`${router.pathname === '/home' ? styles.active : ''}`}
         >
           <Icon>
@@ -36,8 +36,10 @@ const Header = () => {
           </Icon>
         </Link>
         <Link
-          href="/user"
-          className={`${router.pathname === '/user' ? styles.active : ''}`}
+          href="/userProfile"
+          className={`${
+            router.pathname === '/userProfile' ? styles.active : ''
+          }`}
         >
           <Icon>
             <User />

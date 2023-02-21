@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { Admin, Record } from 'pocketbase';
 import { useContext, useEffect, useState } from 'react';
 
@@ -12,9 +11,7 @@ import styles from './HomePage.module.css';
 // import { HomePageProps } from './HomePage.types';
 
 const HomePage = () => {
-  const { getCurrentUser, logoutHandler, records } = useContext(AppContext);
-
-  const router = useRouter();
+  const { getCurrentUser, records } = useContext(AppContext);
 
   const [amountDrank, setAmountDrank] = useState(0);
   const [amounts, setAmounts] = useState<number[]>([]);
@@ -58,21 +55,12 @@ const HomePage = () => {
     setOptimalAmount(Math.round(currentUser?.weight * 0.03 * 1000));
   }, [currentUser]);
 
-  const clickHandler = () => {
-    logoutHandler();
-
-    router.replace('/');
-  };
-
   return (
     <Layout>
       <Container>
         <h2 className={styles.greetings}>Witaj, {currentUser?.username}!</h2>
         <Card optimalAmount={optimalAmount} amountDrank={amountDrank} />
         <RecordsList />
-        <button onClick={clickHandler}>
-          <span>Wyloguj się</span>
-        </button>
       </Container>
     </Layout>
   );
