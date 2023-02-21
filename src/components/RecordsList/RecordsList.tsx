@@ -1,32 +1,27 @@
-// import { Record } from 'pocketbase';
 import { Record } from 'pocketbase';
 import { useContext, useEffect, useState } from 'react';
 
 import EmptyRecordsList from '@/assets/images/empty-records-list.svg';
 import RecordsItem from '@/components/RecordsItem';
+import { AppContext } from '@/context/context';
 
-// import { AppContext } from '@/context/context';
 import styles from './RecordsList.module.css';
-import { RecordsListProps } from './RecordsList.types';
+// import { RecordsListProps } from './RecordsList.types';
 
-const RecordsList = ({ records }: RecordsListProps) => {
-  // const { records } = useContext(AppContext);
+const RecordsList = () => {
+  const { records } = useContext(AppContext);
 
-  const [recordsList, setRecordsList] = useState<Record[]>([]);
+  // const [records, setRecords] = useState<Record[]>([]);
 
-  useEffect(() => {
-    if (typeof records === 'undefined') {
-      return;
-    }
+  // useEffect(() => {}, [records]);
 
-    setRecordsList(records);
-  }, [records]);
+  // TODO: reload data when records change
 
   return (
     <>
       <span className={styles.title}>Twoje wpisy</span>
       <ul className={styles.list}>
-        {recordsList.length === 0 ? (
+        {records.length === 0 ? (
           <div className={styles['empty-records']}>
             <EmptyRecordsList className={styles.icon} />
             <p className={styles.text}>
@@ -34,7 +29,7 @@ const RecordsList = ({ records }: RecordsListProps) => {
             </p>
           </div>
         ) : (
-          recordsList.map(({ amount, drink, id }) => (
+          records.map(({ amount, drink, id }) => (
             <RecordsItem key={id} amount={amount} drink={drink} />
           ))
         )}

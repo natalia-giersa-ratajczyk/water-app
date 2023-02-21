@@ -9,11 +9,10 @@ import { AppContext } from '@/context/context';
 
 import RecordsList from '../RecordsList';
 import styles from './HomePage.module.css';
-import { HomePageProps } from './HomePage.types';
 // import { HomePageProps } from './HomePage.types';
 
-const HomePage = ({ records }: HomePageProps) => {
-  const { getCurrentUser, logoutHandler } = useContext(AppContext);
+const HomePage = () => {
+  const { getCurrentUser, logoutHandler, records } = useContext(AppContext);
 
   const router = useRouter();
 
@@ -70,7 +69,7 @@ const HomePage = ({ records }: HomePageProps) => {
       <Container>
         <h2 className={styles.greetings}>Witaj, {currentUser?.username}!</h2>
         <Card optimalAmount={optimalAmount} amountDrank={amountDrank} />
-        <RecordsList records={records} />
+        <RecordsList />
         <button onClick={clickHandler}>
           <span>Wyloguj się</span>
         </button>

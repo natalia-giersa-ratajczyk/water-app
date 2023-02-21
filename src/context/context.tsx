@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from 'react';
 import { AppContextProps, AppContextProviderProps } from './context.types';
 
 export const AppContext = createContext<AppContextProps>({
+  // getRecords: () => Promise.resolve([] as Record[]),
   records: [],
   loginHandler: () => Promise.resolve({ token: '', record: {} as Record }),
   registerHandler: () => Promise.resolve({} as Record),
@@ -19,9 +20,9 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const [records, setRecords] = useState<Record[]>([]);
 
   useEffect(() => {
-    const pb = new PocketBase('http://127.0.0.1:8090');
-
     const getRecords = async () => {
+      const pb = new PocketBase('http://127.0.0.1:8090');
+
       const currentUser = getCurrentUser();
 
       const records = await pb.collection('records').getFullList(200, {
@@ -34,6 +35,19 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
     getRecords();
   }, []);
+  // const getRecords = async () => {
+  //   const pb = new PocketBase('http://127.0.0.1:8090');
+
+  //   const currentUser = getCurrentUser();
+
+  //   const records = await pb.collection('records').getFullList(200, {
+  //     sort: '-created',
+  //     filter: `userId='${currentUser?.id}'`,
+  //   });
+
+  //   // setRecords(records);
+  //   return records;
+  // };
 
   const createNewRecord = async (drink: string, amount: number) => {
     const pb = new PocketBase('http://127.0.0.1:8090');
@@ -47,6 +61,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
     };
 
     const record = await pb.collection('records').create(data);
+
     return record;
   };
 
@@ -123,6 +138,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   return (
     <AppContext.Provider
       value={{
+        // getRecords,
         records,
         loginHandler,
         isUserValid,

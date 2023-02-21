@@ -1,42 +1,25 @@
-import { IncomingMessage, ServerResponse } from 'http';
 import { GetServerSideProps } from 'next';
-import PocketBase, { Record } from 'pocketbase';
+import { Record } from 'pocketbase';
 
+// import { useContext } from 'react';
 import HomePage from '@/components/HomePage';
+import { initPocketBase } from '@/helpers/initPocketbase';
+// import { AppContext } from '@/context/context';
 
 type HomeProps = {
-  records: Record[];
+  records: Record[] | Promise<Record[]>;
 };
+
+// TODO: load data on the server
 
 const Home = ({ records }: HomeProps) => {
   console.log(records);
-  return <HomePage records={records} />;
+  return <HomePage />;
 };
-
-const initPocketBase = async (
-  req: IncomingMessage & {
-    cookies: Partial<{
-      [key: string]: string;
-    }>;
-  },
-  res: ServerResponse<IncomingMessage>
-) => {
-  const pb = new PocketBase('http://127.0.0.1:8090');
-
-  pb.authStore.loadFromCookie(req?.headers?.cookie || '');
-
-  pb.authStore.onChange(() => {
-    res?.setHeader('set-cookie', pb.authStore.exportToCookie());
-  });
-
-  try {
-    pb.authStore.isValid && (await pb.collection('users').authRefresh());
-  } catch (_) {
-    pb.authStore.clear();
-  }
-
-  return pb;
-};
+// const Home = ({ records }: HomeProps) => {
+//   console.log(records);
+//   return <HomePage records={records} />;
+// };
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async ({
   req,

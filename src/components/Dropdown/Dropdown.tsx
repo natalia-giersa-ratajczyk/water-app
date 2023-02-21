@@ -4,6 +4,8 @@ import Dots from '@/assets/icons/Dots.svg';
 
 import styles from './Dropdown.module.css';
 
+// TODO: write edit and delete records functionalities
+
 const Dropdown = () => {
   return (
     <DropdownMenu.Root>

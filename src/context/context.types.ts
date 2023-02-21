@@ -2,6 +2,7 @@ import { Admin, Record, RecordAuthResponse } from 'pocketbase';
 import { ReactNode } from 'react';
 
 export type AppContextProps = {
+  // getRecords: () => Promise<Record[]>;
   records: Record[];
   loginHandler: (
     email: string,
