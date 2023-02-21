@@ -6,6 +6,7 @@ const UserProfileInput = ({
   label,
   inputType,
   inputValue,
+  disabled,
 }: UserProfileInputProps) => {
   return (
     <fieldset className={styles.wrapper}>
@@ -17,6 +18,7 @@ const UserProfileInput = ({
         type={inputType}
         value={inputValue}
         className={styles.input}
+        disabled={disabled}
       />
     </fieldset>
   );

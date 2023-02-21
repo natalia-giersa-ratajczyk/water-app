@@ -32,6 +32,7 @@ const UserProfilePage = () => {
             label="Imię"
             inputType="text"
             inputValue="Stefan"
+            disabled
           />
           <button className={styles.button} onClick={clickHandler}>
             <span>Wyloguj się</span>

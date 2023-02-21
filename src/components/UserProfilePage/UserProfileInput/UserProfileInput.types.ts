@@ -3,4 +3,5 @@ export type UserProfileInputProps = {
   label: string;
   inputType: string;
   inputValue: string | number;
+  disabled: boolean;
 };

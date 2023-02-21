@@ -27,17 +27,18 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async ({
 }) => {
   const pb = await initPocketBase(req, res);
 
-  const currentUser = pb.authStore.model;
-  console.log(pb.authStore);
+  const currentUser = pb.authStore.token;
+  console.log('x', JSON.parse(JSON.stringify(currentUser)));
 
-  const records = await pb.collection('records').getFullList(200, {
-    sort: '-created',
-    filter: `userId='${currentUser?.id}'`,
-  });
+  // const records = await pb.collection('records').getFullList(200, {
+  //   sort: '-created',
+  //   filter: `userId='${currentUser?.id}'`,
+  // });
+  const records = await pb.collection('records').getFullList();
 
   return {
     props: {
-      records,
+      records: JSON.parse(JSON.stringify(records, null, 2)),
     },
   };
 };
