@@ -8,6 +8,8 @@ const UserProfileInput = ({
   inputValue,
   disabled,
 }: UserProfileInputProps) => {
+  const disabledStyles = disabled ? styles.disabled : '';
+
   return (
     <fieldset className={styles.wrapper}>
       <label htmlFor={id} className={styles.label}>
@@ -16,8 +18,8 @@ const UserProfileInput = ({
       <input
         id={id}
         type={inputType}
-        value={inputValue}
-        className={styles.input}
+        defaultValue={inputValue}
+        className={`${styles.input} ${disabledStyles}`}
         disabled={disabled}
       />
     </fieldset>

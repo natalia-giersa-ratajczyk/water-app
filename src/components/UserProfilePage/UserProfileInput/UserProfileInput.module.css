@@ -2,7 +2,7 @@
   all: unset;
   display: flex;
   align-items: center;
-  gap: 1.6rem;
+  justify-content: space-between;
   font-size: var(--body-2);
   background-color: var(--accent-light-color-opaque);
   color: var(--foreground-color);
@@ -15,11 +15,16 @@
 }
 
 .input {
-  width: 100%;
+  width: 19rem;
   background-color: var(--background-color);
   border: none;
-  border-radius: 8px;
+  outline: none;
+  border-radius: 1.2rem;
   font-size: var(--body-2);
   color: var(--foreground-color);
   padding: 8px 1.6rem;
+}
+
+.disabled {
+  background-color: transparent;
 }

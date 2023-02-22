@@ -1,18 +1,30 @@
+.container {
+  height: calc(100vh - 10rem);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4.4rem 1fr 4.4rem;
+  row-gap: 3.2rem;
+  padding: 3.2rem 0;
+}
+
 .edit-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 2.4rem 0;
+  grid-row: 1 / 2;
 }
 
-.edit {
+.edit-button,
+.change-password-button {
+  all: unset;
   font-size: var(--small);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   background-color: var(--background-color);
   color: var(--foreground-color);
-  border-radius: 8px;
-  padding: 1.2rem 2.4rem;
+  border-radius: 10rem;
+  height: 4.4rem;
+  padding: 0 2.4rem;
 }
 
 .title {
@@ -20,13 +32,72 @@
   color: var(--accent-color);
 }
 
-.wrapper {
+.form-wrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
   background-color: var(--background-color);
   border-radius: 8px;
   padding: 1.6rem;
+  grid-row: 2 / 3;
+  height: fit-content;
+}
+
+.gender-box {
+  background-color: var(--accent-light-color-opaque);
+  padding: 8px 1.6rem;
+  border-radius: 8px;
+}
+
+.gender-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--body-2);
+  color: var(--foreground-color);
+}
+
+.gender-text h3 {
+  font-size: var(--body-2);
+  font-weight: 500;
+  padding: 8px 0;
+}
+
+.gender-text span {
+  width: 19rem;
+  padding: 8px 1.6rem;
+}
+
+.edit-gender-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 8px;
+}
+
+.confirm-password-box {
+  margin-top: 3.2rem;
+}
+
+.confirm-edit-button {
+  all: unset;
+  font-size: var(--small);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--accent-light-color-opaque);
+  color: var(--foreground-color);
+  border-radius: 10rem;
+  text-align: center;
+  margin-top: 3.2rem;
+  height: 4.4rem;
+  padding: 0 2.4rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-row: 3 / 4;
 }
 
 .button {
@@ -39,5 +110,5 @@
   font-size: var(--body-2);
   font-weight: 600;
   border-radius: 10rem;
-  margin-top: 3.2rem;
+  display: block;
 }

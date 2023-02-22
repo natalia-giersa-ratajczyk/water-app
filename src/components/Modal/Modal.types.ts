@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type ModalProps = {
   trigger: ReactNode;
-};
-
-export type ModalFormProps = {
-  drink: string;
-  amount: string;
+  children: ReactNode;
+  modalTitle: string;
+  modalIsOpen: boolean;
+  openModalHandler: Dispatch<SetStateAction<boolean>>;
 };
