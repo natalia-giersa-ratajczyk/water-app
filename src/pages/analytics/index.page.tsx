@@ -1,8 +1,7 @@
-// import LoadingPage from '@/components/LoadingPage';
+import AnalyticsPage from '@/components/AnalyticsPage';
 
 const Analytics = () => {
-  // return <LoadingPage />;
-  <h1>Hello</h1>;
+  return <AnalyticsPage />;
 };
 
 export default Analytics;

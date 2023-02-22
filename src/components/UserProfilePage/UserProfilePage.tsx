@@ -62,7 +62,7 @@ const UserProfilePage = () => {
 
   return (
     <Layout>
-      <Container isFullHeight>
+      <Container>
         <div className={styles.container}>
           <div className={styles['edit-wrapper']}>
             <h2 className={styles.title}>Mój profil</h2>
