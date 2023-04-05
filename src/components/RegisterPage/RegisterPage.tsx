@@ -5,6 +5,7 @@ import Container from '@/components/Container';
 import Email from '@/components/Inputs/Email';
 import Name from '@/components/Inputs/Name';
 import Password from '@/components/Inputs/Password';
+import { ONBOARDING_ROUTE } from '@/components/utils/routes';
 
 import styles from './RegisterPage.module.css';
 
@@ -20,7 +21,7 @@ const RegisterPage = () => {
         </form>
         <div className={styles.button}>
           <Button>
-            <Link href="/onboarding">Zarejestruj się</Link>
+            <Link href={ONBOARDING_ROUTE}>Zarejestruj się</Link>
           </Button>
         </div>
       </Container>

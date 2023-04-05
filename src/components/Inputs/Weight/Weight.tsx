@@ -1,10 +1,11 @@
 import { forwardRef } from 'react';
 
+import inputStyles from '../Inputs.module.css';
 import styles from './Weight.module.css';
 
 const Weight = forwardRef<HTMLInputElement>((_, ref) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={inputStyles.input}>
       <label htmlFor="weight">Waga</label>
       <div className={styles['weight-input']}>
         <input type="number" id="weight" ref={ref} />
