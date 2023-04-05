@@ -7,7 +7,7 @@ import Button from '@/components/Button';
 import Container from '@/components/Container/Container';
 import Checkbox from '@/components/Inputs/Checkbox';
 import Weight from '@/components/Inputs/Weight';
-import { HOME_ROUTE } from '@/components/utils/routes';
+import { HOME_ROUTE } from '@/utils/routes';
 
 import styles from './OnboardingPage.module.css';
 

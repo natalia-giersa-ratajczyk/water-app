@@ -1,27 +1,9 @@
-import Drop from '@/assets/icons/Drop.svg';
-import Container from '@/components/Container';
-import Icon from '@/components/Icon';
-import Layout from '@/components/Layout';
+import HomePage from '@/components/HomePage';
 
-import styles from './Home.module.css';
-import { HomeProps } from './Home.types';
+// TODO: fetch name from the database
 
-const Home = ({ name = 'Natalia' }: HomeProps) => {
-  return (
-    <Layout>
-      <Container>
-        <h2 className={styles.greetings}>Witaj, {name}!</h2>
-        <div className={styles.card}>
-          <p className={styles['card-text']}>Twój dzisiejszy progres</p>
-          <div>
-            <Icon>
-              <Drop />
-            </Icon>
-          </div>
-        </div>
-      </Container>
-    </Layout>
-  );
+const Home = () => {
+  return <HomePage name="Natalia" />;
 };
 
 export default Home;

@@ -1,0 +1,21 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 1.6rem;
+  font-size: var(--body-2);
+  color: var(--foreground-color);
+  background-color: var(--accent-light-color-opaque);
+  border-radius: 8px;
+}
+
+.amount {
+  font-weight: 600;
+  margin-right: 1.6rem;
+}
+
+.drink {
+  font-size: var(--small);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

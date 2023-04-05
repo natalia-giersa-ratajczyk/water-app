@@ -5,7 +5,7 @@ import Container from '@/components/Container';
 import Email from '@/components/Inputs/Email';
 import Name from '@/components/Inputs/Name';
 import Password from '@/components/Inputs/Password';
-import { ONBOARDING_ROUTE } from '@/components/utils/routes';
+import { ONBOARDING_ROUTE } from '@/utils/routes';
 
 import styles from './RegisterPage.module.css';
 

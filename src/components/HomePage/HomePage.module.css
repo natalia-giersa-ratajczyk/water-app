@@ -1,0 +1,5 @@
+.greetings {
+  font-size: var(--body-1);
+  color: var(--accent-color);
+  margin: 2.4rem 0;
+}
