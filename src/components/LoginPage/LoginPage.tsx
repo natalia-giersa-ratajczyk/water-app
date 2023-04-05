@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
-import { z } from 'zod';
 
 import Error from '@/assets/icons/Error.svg';
 import Button from '@/components/Button';
@@ -15,19 +14,7 @@ import { HOME_ROUTE, ONBOARDING_ROUTE } from '@/utils/routes';
 
 import styles from './LoginPage.module.css';
 import { LoginPageForm } from './LoginPage.types';
-
-const userSchema = z.object({
-  email: z
-    .string()
-    .min(1, { message: 'Email jest wymagany' })
-    .email({ message: 'Niepoprawny email' }),
-  password: z
-    .string()
-    .min(1, { message: 'Hasło jest wymagane' })
-    .min(7, { message: 'Hasło powinno mieć co najmniej 7 znaków' }),
-});
-
-type userSchema = z.infer<typeof userSchema>;
+import { NOTIFICATION_DURATION, USER_SCHEMA } from './LoginPage.utils';
 
 const notify = () =>
   toast.error('Nieprawidłowy email lub hasło.', {
@@ -38,7 +25,7 @@ const notify = () =>
       fontSize: '1.2rem',
     },
     id: 'error',
-    duration: 2000,
+    duration: NOTIFICATION_DURATION,
   });
 
 const LoginPage = () => {
@@ -53,7 +40,7 @@ const LoginPage = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<LoginPageForm>({
-    resolver: zodResolver(userSchema),
+    resolver: zodResolver(USER_SCHEMA),
   });
 
   const submitHandler = async ({ email, password }: LoginPageForm) => {

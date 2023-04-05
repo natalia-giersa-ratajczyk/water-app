@@ -11,7 +11,7 @@
 }
 
 .overlay[data-state='open'] {
-  animation: overlay 0.8s ease-out forwards;
+  animation: overlayOpen 0.8s ease-out forwards;
 }
 
 .overlay[data-state='closed'] {
@@ -30,13 +30,13 @@
   bottom: -5rem;
   left: 0;
   right: 0;
-  max-height: 60vh;
+  max-height: 60dvh;
   opacity: 0;
   z-index: 2;
 }
 
 .wrapper[data-state='open'] {
-  animation: modal 0.75s ease-in-out forwards;
+  animation: modalOpen 0.75s ease-in-out forwards;
 }
 
 .wrapper[data-state='closed'] {
@@ -58,7 +58,7 @@
   all: unset;
 }
 
-@keyframes overlay {
+@keyframes overlayOpen {
   0% {
     transform: translate(-50%, 64%) scale(0);
     opacity: 0;
@@ -86,7 +86,7 @@
   }
 }
 
-@keyframes modal {
+@keyframes modalOpen {
   0% {
     transform: translateY(100%);
     opacity: 0;

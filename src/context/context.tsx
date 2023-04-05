@@ -27,10 +27,12 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
       const currentUser = getCurrentUser();
 
-      const records = await pb.collection('records').getFullList(DEFAULT_RECORDS_COUNT, {
-        sort: '-created',
-        filter: `userId='${currentUser?.id}'`,
-      });
+      const records = await pb
+        .collection('records')
+        .getFullList(DEFAULT_RECORDS_COUNT, {
+          sort: '-created',
+          filter: `userId='${currentUser?.id}'`,
+        });
 
       setRecords(records);
     };
@@ -113,7 +115,9 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   const existingUsers = async () => {
     const pb = new PocketBase(API_URL);
 
-    const users = await pb.collection('users').getFullList(DEFAULT_RECORDS_COUNT);
+    const users = await pb
+      .collection('users')
+      .getFullList(DEFAULT_RECORDS_COUNT);
 
     return users;
   };

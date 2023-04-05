@@ -88,9 +88,9 @@ const Card = ({ amountDrank, optimalAmount }: CardProps) => {
             </Icon>
           </button>
         }
-        modalTitle="Dodaj nowy wpis"
-        modalIsOpen={open}
-        openModalHandler={setOpen}
+        title="Dodaj nowy wpis"
+        isOpen={open}
+        openHandler={setOpen}
       >
         <fieldset className={styles['input-container']}>
           <label htmlFor="drink">Napój</label>

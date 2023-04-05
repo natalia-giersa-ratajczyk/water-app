@@ -19,6 +19,8 @@ const HomePage = () => {
   const [optimalAmount, setOptimalAmount] = useState(0);
   const [currentUser, setCurrentUser] = useState<Record | Admin | null>(null);
 
+  // TODO: Extract the code below to a custom hook
+
   useEffect(() => {
     if (getCurrentUser() === null) {
       return;

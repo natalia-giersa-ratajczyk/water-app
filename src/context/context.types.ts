@@ -1,4 +1,4 @@
-import { Admin, Record, RecordAuthResponse } from 'pocketbase';
+import { BaseAuthStore, Record, RecordAuthResponse } from 'pocketbase';
 import { ReactNode } from 'react';
 
 export type AppContextProps = {
@@ -15,7 +15,7 @@ export type AppContextProps = {
     confirmedPassword: string
   ) => Promise<Record>;
   isUserValid: () => boolean;
-  getCurrentUser: () => Record | Admin | null;
+  getCurrentUser: () => BaseAuthStore['baseModel'];
   existingUsers: () => Promise<Record[]>;
   updateUserData: (
     id: string,

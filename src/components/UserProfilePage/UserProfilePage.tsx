@@ -31,6 +31,9 @@ const UserProfilePage = () => {
     formState: { isSubmitSuccessful },
   } = useForm<ModalFormProps>();
 
+  const isFemaleChecked = gender !== null && !gender;
+  const isMaleChecked = gender !== null && gender;
+
   const clickHandler = () => {
     logoutHandler();
 
@@ -97,7 +100,7 @@ const UserProfilePage = () => {
                 <div className={styles['edit-gender-box']}>
                   <FemaleCheckbox
                     {...register('gender')}
-                    isChecked={gender !== null && !gender}
+                    isChecked={isFemaleChecked}
                     onChange={(event) => {
                       register('gender').onChange(event);
                       setGender(false);
@@ -105,7 +108,7 @@ const UserProfilePage = () => {
                   />
                   <MaleCheckbox
                     {...register('gender')}
-                    isChecked={gender !== null && gender}
+                    isChecked={isMaleChecked}
                     onChange={(event) => {
                       register('gender').onChange(event);
                       setGender(true);
@@ -133,9 +136,9 @@ const UserProfilePage = () => {
                   <span>Zmień hasło</span>
                 </button>
               }
-              modalIsOpen={open}
-              openModalHandler={setOpen}
-              modalTitle="Zmiana hasła"
+              isOpen={open}
+              openHandler={setOpen}
+              title="Zmiana hasła"
             >
               <Password {...register('password')} />
               <ConfirmedPassword {...register('confirmedPassword')} />
