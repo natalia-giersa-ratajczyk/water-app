@@ -1,0 +1,7 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--background-color);
+  font-size: var(--body-2);
+}

@@ -1,0 +1,15 @@
+.button {
+  all: unset;
+  text-align: center;
+  padding: 1.2rem 9rem;
+  background-color: var(--background-color);
+  border-radius: 100px;
+  box-shadow: var(--button-shadow);
+}
+
+.button > * {
+  text-decoration: none;
+  font-size: var(--body-2);
+  font-weight: 600;
+  color: var(--foreground-color);
+}

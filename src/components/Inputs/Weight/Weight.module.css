@@ -1,0 +1,30 @@
+.weight-input {
+  position: relative;
+}
+
+.weight-input input {
+  font-family: inherit;
+  padding: 8px 3.2rem 8px 1.6rem;
+  background-color: var(--background-color);
+  border-radius: 100px;
+  border: none;
+  width: 50%;
+}
+
+.weight-input input::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--light-gray-color);
+}
+
+.weight-input input:focus {
+  outline: none;
+}
+
+.weight {
+  color: var(--foreground-color);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-150%, 25%);
+}

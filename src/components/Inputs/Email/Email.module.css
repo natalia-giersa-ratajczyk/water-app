@@ -1,0 +1,31 @@
+.email-input {
+  position: relative;
+}
+
+.email-input svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translate(50%, -50%);
+  z-index: 1;
+  color: var(--foreground-color);
+}
+
+.email-input input {
+  font-family: inherit;
+  padding: 8px 1.6rem 8px 3.2rem;
+  background-color: var(--background-color);
+  border-radius: 100px;
+  border: none;
+  width: 100%;
+}
+
+.email-input input::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--light-gray-color);
+}
+
+.email-input input:focus {
+  outline: none;
+}

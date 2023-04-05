@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    to top,
+    var(--accent-light-color-opaque),
+    var(--accent-light-color)
+  );
+  padding: 6px 0;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+.logo-box svg {
+  height: 2.4rem;
+  width: 2.4rem;
+  color: var(--accent-color);
+}
+
+.logo {
+  font-size: var(--h6);
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2rem 0 1rem;
+}
+
+.active > * {
+  background-color: var(--accent-color);
+}

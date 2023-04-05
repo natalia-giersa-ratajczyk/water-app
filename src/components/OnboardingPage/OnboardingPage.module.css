@@ -1,0 +1,36 @@
+.background {
+  background-color: var(--accent-color);
+}
+
+.text {
+  color: var(--background-color);
+  font-size: var(--body-2);
+  line-height: 1.618;
+  padding: 6.4rem 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  color: var(--background-color);
+  font-size: var(--body-2);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.gender {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 8px;
+}
+
+.button {
+  text-align: center;
+  margin-top: 4.8rem;
+}

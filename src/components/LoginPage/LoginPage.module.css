@@ -1,0 +1,21 @@
+.background {
+  background-color: var(--accent-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.title {
+  font-size: var(--h6);
+  color: var(--background-color);
+  text-align: center;
+  padding: 6.4rem 0 7.2rem;
+}
+
+.button {
+  margin-top: 6.4rem;
+  text-align: center;
+}
