@@ -4,7 +4,7 @@ import Button from '@/components/Button';
 import Container from '@/components/Container';
 import Email from '@/components/Inputs/Email';
 import Password from '@/components/Inputs/Password';
-import { HOME_ROUTE } from '@/components/utils/routes';
+import { HOME_ROUTE } from '@/utils/routes';
 
 import styles from './LoginPage.module.css';
 

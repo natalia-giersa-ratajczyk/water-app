@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Background from '@/assets/images/start.jpg';
 import Button from '@/components/Button';
 import Container from '@/components/Container';
-import { LOGIN_ROUTE, REGISTER_ROUTE } from '@/components/utils/routes';
+import { LOGIN_ROUTE, REGISTER_ROUTE } from '@/utils/routes';
 
 import styles from './StartPage.module.css';
 

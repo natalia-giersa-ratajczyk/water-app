@@ -6,6 +6,15 @@ import Heart from '@/assets/icons/Heart.svg';
 import Plus from '@/assets/icons/Plus.svg';
 import Trophy from '@/assets/icons/Trophy.svg';
 import Icon from '@/components/Icon';
+import {
+  CACTUS_MAX,
+  CACTUS_MIN,
+  FLOWER_MAX,
+  FLOWER_MIN,
+  HEART_MAX,
+  HEART_MIN,
+  TROPHY_MIN,
+} from '@/utils/cardConstants';
 
 import styles from './Card.module.css';
 import { CardProps } from './Card.types';
@@ -17,10 +26,10 @@ const Card = ({ amountDrank, optimalAmount }: CardProps) => {
     setPercentage(Math.round((amountDrank / optimalAmount) * 100));
   }, [optimalAmount, amountDrank]);
 
-  const shouldShowCactus = percentage >= 0 && percentage <= 24;
-  const shouldShowFlower = percentage >= 25 && percentage <= 49;
-  const shouldShowHeart = percentage >= 50 && percentage <= 74;
-  const shouldShowTrophy = percentage >= 75;
+  const shouldShowCactus = percentage >= CACTUS_MIN && percentage <= CACTUS_MAX;
+  const shouldShowFlower = percentage >= FLOWER_MIN && percentage <= FLOWER_MAX;
+  const shouldShowHeart = percentage >= HEART_MIN && percentage <= HEART_MAX;
+  const shouldShowTrophy = percentage >= TROPHY_MIN;
 
   return (
     <div className={styles.card}>

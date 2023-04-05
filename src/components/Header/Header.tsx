@@ -10,7 +10,7 @@ import {
   ANALYTICS_ROUTE,
   HOME_ROUTE,
   USER_PROFILE_ROUTE,
-} from '@/components/utils/routes';
+} from '@/utils/routes';
 
 import styles from './Header.module.css';
 
