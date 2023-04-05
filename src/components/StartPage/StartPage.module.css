@@ -4,7 +4,7 @@
     rgba(61, 122, 184, 0.8),
     rgba(61, 122, 184, 0.9)
   );
-  height: 100vh;
+  height: 100dvh;
 }
 
 .wrapper {
@@ -16,7 +16,7 @@
 
 .image {
   object-fit: cover;
-  z-index: -10;
+  z-index: -1;
 }
 
 .text {
