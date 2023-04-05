@@ -19,7 +19,7 @@ const RecordsList = () => {
     <>
       <span className={styles.title}>Twoje wpisy</span>
       <ul className={styles.list}>
-        {recordsList.map(({ amount, drink, id }) => (
+        {recordsList.map(({ id, amount, drink }) => (
           <RecordsItem key={id} amount={amount} drink={drink} />
         ))}
       </ul>

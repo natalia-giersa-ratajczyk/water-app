@@ -4,6 +4,7 @@ import Card from '@/components/Card';
 import Container from '@/components/Container';
 import Layout from '@/components/Layout';
 import { AppContext } from '@/context/context';
+import { FACTOR, ML_FACTOR } from '@/utils/constants';
 
 import RecordsList from '../RecordsList';
 import styles from './HomePage.module.css';
@@ -15,7 +16,7 @@ const HomePage = () => {
   const [amounts, setAmounts] = useState<number[]>([]);
   const [optimalAmount, setOptimalAmount] = useState(0);
   const [username, setUsername] = useState('');
-  const [userweight, setUserweight] = useState(0);
+  const [userWeight, setUserWeight] = useState(0);
 
   useEffect(() => {
     setAmountDrank(
@@ -37,14 +38,14 @@ const HomePage = () => {
     setUsername(
       usernames.find((username) => username.id === 'xac58sk75kwapm8')?.username
     );
-    setUserweight(
+    setUserWeight(
       usernames.find((username) => username.id === 'xac58sk75kwapm8')?.weight
     );
   }, [usernames]);
 
   useEffect(() => {
-    setOptimalAmount(userweight * 0.03 * 1000);
-  }, [userweight]);
+    setOptimalAmount(userWeight * FACTOR * ML_FACTOR);
+  }, [userWeight]);
 
   return (
     <Layout>
