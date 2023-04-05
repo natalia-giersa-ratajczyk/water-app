@@ -11,6 +11,7 @@ import FemaleCheckbox from '@/components/Inputs/FemaleCheckbox';
 import MaleCheckbox from '@/components/Inputs/MaleCheckbox';
 import Weight from '@/components/Inputs/Weight';
 import { AppContext } from '@/context/context';
+import { HOME_ROUTE } from '@/utils/routes';
 
 import styles from './OnboardingPage.module.css';
 import { OnboardingPageForm } from './OnboardingPage.types';
@@ -41,7 +42,7 @@ const OnboardingPage = () => {
     const currentUserId = currentUser?.id ?? '';
     updateUserData(currentUserId, gender, weight);
 
-    router.replace('/home');
+    router.replace(HOME_ROUTE);
   };
 
   return (

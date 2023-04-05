@@ -3,13 +3,17 @@ lockfileVersion: 5.4
 specifiers:
   '@hookform/resolvers': ^2.9.11
   '@next/font': 13.1.6
+<<<<<<< HEAD
   '@radix-ui/react-dialog': ^1.0.2
   '@radix-ui/react-dropdown-menu': ^2.0.2
+=======
+  '@radix-ui/react-dropdown-menu': 2.0.2
+>>>>>>> beead01313d3331ea3bb19710f6082816e3eb044
   '@svgr/webpack': 6.5.1
   '@types/node': 18.11.19
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
-  '@types/react-transition-group': ^4.4.5
+  '@types/react-transition-group': 4.4.5
   '@typescript-eslint/eslint-plugin': 5.50.0
   '@typescript-eslint/parser': 5.50.0
   csstype: ^3.0.10
@@ -20,6 +24,7 @@ specifiers:
   eslint-plugin-prettier: 4.2.1
   eslint-plugin-simple-import-sort: 10.0.0
   next: 13.1.6
+<<<<<<< HEAD
   pocketbase: ^0.11.0
   prettier: 2.8.3
   react: 18.2.0
@@ -27,6 +32,13 @@ specifiers:
   react-hook-form: ^7.43.1
   react-hot-toast: ^2.4.0
   react-transition-group: ^4.4.5
+=======
+  pocketbase: 0.10.1
+  prettier: 2.8.3
+  react: 18.2.0
+  react-dom: 18.2.0
+  react-transition-group: 4.4.5
+>>>>>>> beead01313d3331ea3bb19710f6082816e3eb044
   typescript: 4.9.5
   zod: ^3.20.6
 

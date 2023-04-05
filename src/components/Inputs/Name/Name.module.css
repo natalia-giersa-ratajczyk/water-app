@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -10,6 +11,8 @@
   position: relative;
 }
 
+=======
+>>>>>>> beead01313d3331ea3bb19710f6082816e3eb044
 .name-input input {
   font-family: inherit;
   padding: 1.2rem 2.4rem 1.2rem 3.2rem;

@@ -4,6 +4,7 @@ import HidePassword from '@/assets/icons/HidePassword.svg';
 import PasswordIcon from '@/assets/icons/Password.svg';
 import ShowPassword from '@/assets/icons/ShowPassword.svg';
 
+import inputStyles from '../Inputs.module.css';
 import styles from './Password.module.css';
 import { PasswordProps } from './Password.types';
 
@@ -15,6 +16,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
       setPasswordVisible((prevState) => !prevState);
     };
 
+<<<<<<< HEAD
     return (
       <div className={styles.wrapper}>
         <label htmlFor="password">Hasło</label>
@@ -36,6 +38,14 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
           >
             {passwordVisible ? <ShowPassword /> : <HidePassword />}
           </button>
+=======
+  return (
+    <div className={inputStyles.input}>
+      <label htmlFor="password">Hasło</label>
+      <div className={styles['password-input']}>
+        <div className={styles['icon-wrapper']}>
+          <PasswordIcon />
+>>>>>>> beead01313d3331ea3bb19710f6082816e3eb044
         </div>
       </div>
     );

@@ -13,6 +13,7 @@ import Email from '@/components/Inputs/Email';
 import Name from '@/components/Inputs/Name';
 import Password from '@/components/Inputs/Password';
 import { AppContext } from '@/context/context';
+import { LOGIN_ROUTE } from '@/utils/routes';
 
 import styles from './RegisterPage.module.css';
 import { RegisterPageForm } from './RegisterPage.types';
@@ -89,7 +90,7 @@ const RegisterPage = () => {
       setIsLoading(false);
     }
 
-    router.replace('/login');
+    router.replace(LOGIN_ROUTE);
   };
 
   useEffect(() => {

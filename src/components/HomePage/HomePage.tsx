@@ -5,6 +5,7 @@ import Card from '@/components/Card';
 import Container from '@/components/Container';
 import Layout from '@/components/Layout';
 import { AppContext } from '@/context/context';
+import { FACTOR, ML_FACTOR } from '@/utils/constants';
 
 import RecordsList from '../RecordsList';
 import styles from './HomePage.module.css';
@@ -52,7 +53,7 @@ const HomePage = () => {
   // }, [currentUser, router]);
 
   useEffect(() => {
-    setOptimalAmount(Math.round(currentUser?.weight * 0.03 * 1000));
+    setOptimalAmount(Math.round(currentUser?.weight * FACTOR * ML_FACTOR));
   }, [currentUser]);
 
   return (

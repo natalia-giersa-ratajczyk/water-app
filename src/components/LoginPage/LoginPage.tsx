@@ -11,6 +11,7 @@ import Container from '@/components/Container';
 import Email from '@/components/Inputs/Email';
 import Password from '@/components/Inputs/Password';
 import { AppContext } from '@/context/context';
+import { HOME_ROUTE, ONBOARDING_ROUTE } from '@/utils/routes';
 
 import styles from './LoginPage.module.css';
 import { LoginPageForm } from './LoginPage.types';
@@ -73,11 +74,11 @@ const LoginPage = () => {
     const currentUser = getCurrentUser();
 
     if (currentUser?.weight === 0) {
-      router.replace('/onboarding');
+      router.replace(ONBOARDING_ROUTE);
       return;
     }
 
-    router.replace('/home');
+    router.replace(HOME_ROUTE);
   };
 
   useEffect(() => {
