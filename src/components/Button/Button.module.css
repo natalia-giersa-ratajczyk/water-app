@@ -3,7 +3,6 @@
   text-align: center;
   padding: 1.2rem 9rem;
   background-color: var(--background-color);
-  border: none;
   border-radius: 100px;
   box-shadow: var(--button-shadow);
 }
