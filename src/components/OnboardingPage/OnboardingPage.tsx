@@ -1,63 +1,89 @@
-import Link from 'next/link';
-import { useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/router';
+import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-import Female from '@/assets/icons/Female.svg';
-import Male from '@/assets/icons/Male.svg';
+import Error from '@/assets/icons/Error.svg';
 import Button from '@/components/Button';
 import Container from '@/components/Container/Container';
-import Checkbox from '@/components/Inputs/Checkbox';
+import FemaleCheckbox from '@/components/Inputs/FemaleCheckbox';
+import MaleCheckbox from '@/components/Inputs/MaleCheckbox';
 import Weight from '@/components/Inputs/Weight';
+import { AppContext } from '@/context/context';
 import { HOME_ROUTE } from '@/utils/routes';
 
 import styles from './OnboardingPage.module.css';
+import { OnboardingPageForm } from './OnboardingPage.types';
+import { USER_DATA_SCHEMA } from './OnboardingPage.utils';
 
 const OnboardingPage = () => {
-  const [isCheckedFemale, setIsCheckedFemale] = useState(false);
-  const [isCheckedMale, setIsCheckedMale] = useState(false);
+  const { updateUserData, getCurrentUser } = useContext(AppContext);
+  const [gender, setGender] = useState<boolean | null>(null);
 
-  const isFemaleHandler = () => {
-    setIsCheckedFemale(true);
-    setIsCheckedMale(false);
-  };
+  const router = useRouter();
 
-  const isMaleHandler = () => {
-    setIsCheckedMale(true);
-    setIsCheckedFemale(false);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<OnboardingPageForm>({
+    resolver: zodResolver(USER_DATA_SCHEMA),
+  });
+
+  const isFemaleChecked = gender !== null && !gender;
+  const isMaleChecked = gender !== null && gender;
+
+  const submitHandler = ({ weight, gender }: OnboardingPageForm) => {
+    const currentUser = getCurrentUser();
+    const currentUserId = currentUser?.id ?? '';
+    updateUserData(currentUserId, gender, weight);
+
+    router.replace(HOME_ROUTE);
   };
 
   return (
     <div className={styles.background}>
-      <Container>
+      <Container isFullHeight>
         <p className={styles.text}>
           Podaj nam kilka informacji o sobie, żebyśmy mogli wyliczyć Twoje
-          dzienne zapotrzebowanie na wodę
+          dzienne minimalne zapotrzebowanie na wodę
         </p>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
           <div className={styles.wrapper}>
             <span>Płeć</span>
             <div className={styles.gender}>
-              <Checkbox
-                id="female"
-                text="Kobieta"
-                icon={<Female />}
-                isChecked={isCheckedFemale}
-                onChange={isFemaleHandler}
+              <FemaleCheckbox
+                {...register('gender')}
+                isChecked={isFemaleChecked}
+                onChange={(event) => {
+                  register('gender').onChange(event);
+                  setGender(false);
+                }}
               />
-              <Checkbox
-                id="male"
-                text="Mężczyzna"
-                icon={<Male />}
-                isChecked={isCheckedMale}
-                onChange={isMaleHandler}
+              <MaleCheckbox
+                {...register('gender')}
+                isChecked={isMaleChecked}
+                onChange={(event) => {
+                  register('gender').onChange(event);
+                  setGender(true);
+                }}
               />
+              <p className={styles.message}>
+                {errors.gender && <Error />}
+                {errors.gender && 'Płeć jest wymagana'}
+              </p>
             </div>
           </div>
-          <Weight />
+          <div className={styles['message-wrapper']}>
+            <Weight {...register('weight', { required: true })} />
+            <p className={styles.message}>
+              {errors.weight && <Error />}
+              {errors.weight?.message}
+            </p>
+          </div>
           <div className={styles.button}>
-            <Button>
-              <Link href={HOME_ROUTE} replace>
-                Zapisz
-              </Link>
+            <Button onClick={handleSubmit(submitHandler)}>
+              <span>Zapisz</span>
             </Button>
           </div>
         </form>

@@ -7,8 +7,14 @@
   --foreground-color: #2f4858;
   --white-color: #fff;
   --light-gray-color: #777;
+  --red-color: #ff8a8b;
 
-  --button-shadow: 0 4px 2.4rem rgba(0, 0, 0, 0.2);
+  --button-shadow: 0 4px 2.4rem rgba(0, 0, 0, 0.1);
+  --background-gradient: linear-gradient(
+    to top,
+    var(--accent-light-color),
+    var(--accent-color)
+  );
 
   --small: 1.2rem;
   --body-2: 1.6rem;

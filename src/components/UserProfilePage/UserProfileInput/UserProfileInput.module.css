@@ -1,0 +1,30 @@
+.wrapper {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--body-2);
+  background-color: var(--accent-light-color-opaque);
+  color: var(--foreground-color);
+  padding: 8px 1.6rem;
+  border-radius: 8px;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.input {
+  width: 19rem;
+  background-color: var(--background-color);
+  border: none;
+  outline: none;
+  border-radius: 1.2rem;
+  font-size: var(--body-2);
+  color: var(--foreground-color);
+  padding: 8px 1.6rem;
+}
+
+.disabled {
+  background-color: transparent;
+}

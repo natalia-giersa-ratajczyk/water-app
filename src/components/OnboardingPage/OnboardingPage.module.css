@@ -1,12 +1,12 @@
 .background {
-  background-color: var(--accent-color);
+  background-image: var(--background-gradient);
 }
 
 .text {
   color: var(--background-color);
   font-size: var(--body-2);
   line-height: 1.618;
-  padding: 6.4rem 0;
+  padding: 6.4rem 2rem;
 }
 
 .form {
@@ -15,6 +15,7 @@
   gap: 4rem;
   color: var(--background-color);
   font-size: var(--body-2);
+  padding: 0 2rem;
 }
 
 .wrapper {
@@ -28,9 +29,32 @@
   align-items: center;
   justify-content: space-between;
   padding-left: 8px;
+  position: relative;
 }
 
 .button {
   text-align: center;
   margin-top: 4.8rem;
+}
+
+.message-wrapper {
+  position: relative;
+}
+
+.message {
+  color: var(--red-color);
+  font-size: var(--small);
+  font-family: inherit;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  bottom: -3rem;
+  left: 0;
+}
+
+.message svg {
+  height: 1.8rem;
+  width: 1.8rem;
 }

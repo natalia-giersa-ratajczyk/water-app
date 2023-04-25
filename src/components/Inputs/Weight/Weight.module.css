@@ -4,7 +4,7 @@
 
 .weight-input input {
   font-family: inherit;
-  padding: 8px 3.2rem 8px 1.6rem;
+  padding: 1.2rem 3.2rem 1.2rem 2.4rem;
   background-color: var(--background-color);
   border-radius: 100px;
   border: none;
@@ -24,7 +24,7 @@
 .weight {
   color: var(--foreground-color);
   position: absolute;
-  top: 0;
+  top: 4px;
   left: 50%;
   transform: translate(-150%, 25%);
 }
