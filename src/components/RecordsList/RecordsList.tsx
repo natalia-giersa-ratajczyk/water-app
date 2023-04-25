@@ -24,7 +24,12 @@ const RecordsList = () => {
           </div>
         ) : (
           records.map(({ amount, drink, id }) => (
-            <RecordsItem key={id} amount={amount} drink={drink} />
+            <RecordsItem
+              key={id}
+              amount={amount}
+              drink={drink}
+              shouldShowDropdown
+            />
           ))
         )}
       </ul>

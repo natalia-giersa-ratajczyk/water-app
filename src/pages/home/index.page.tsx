@@ -30,11 +30,11 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async ({
   const currentUser = pb.authStore.token;
   console.log('x', JSON.parse(JSON.stringify(currentUser)));
 
-  // const records = await pb.collection('records').getFullList(200, {
-  //   sort: '-created',
-  //   filter: `userId='${currentUser?.id}'`,
-  // });
-  const records = await pb.collection('records').getFullList();
+  const records = await pb.collection('records').getFullList(200, {
+    sort: '-created',
+    filter: `userId='${currentUser?.id}'`,
+  });
+  // const records = await pb.collection('records').getFullList();
 
   return {
     props: {
