@@ -1,4 +1,4 @@
-import { Admin, Record } from 'pocketbase';
+import { BaseAuthStore } from 'pocketbase';
 import { useContext, useEffect, useState } from 'react';
 
 import Card from '@/components/Card';
@@ -17,7 +17,8 @@ const HomePage = () => {
   const [amountDrank, setAmountDrank] = useState(0);
   const [amounts, setAmounts] = useState<number[]>([]);
   const [optimalAmount, setOptimalAmount] = useState(0);
-  const [currentUser, setCurrentUser] = useState<Record | Admin | null>(null);
+  const [currentUser, setCurrentUser] =
+    useState<BaseAuthStore['baseModel']>(null);
 
   // TODO: Extract the code below to a custom hook
 
