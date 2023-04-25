@@ -4,6 +4,7 @@ import HidePassword from '@/assets/icons/HidePassword.svg';
 import PasswordIcon from '@/assets/icons/Password.svg';
 import ShowPassword from '@/assets/icons/ShowPassword.svg';
 
+import inputStyles from '../Inputs.module.css';
 import styles from './ConfirmedPassword.module.css';
 import { ConfirmedPasswordProps } from './ConfirmedPassword.types';
 
@@ -16,7 +17,7 @@ const ConfirmedPassword = forwardRef<HTMLInputElement, ConfirmedPasswordProps>(
     };
 
     return (
-      <div className={styles.wrapper}>
+      <div className={inputStyles.input}>
         <label htmlFor="confirmedPassword"> Powtórz hasło</label>
         <div className={styles['password-input']}>
           <div className={styles['icon-wrapper']}>

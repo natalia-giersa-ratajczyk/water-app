@@ -1,10 +1,11 @@
-import { Admin, Record } from 'pocketbase';
+import { BaseAuthStore } from 'pocketbase';
 import { useContext, useEffect, useState } from 'react';
 
 import Card from '@/components/Card';
 import Container from '@/components/Container';
 import Layout from '@/components/Layout';
 import { AppContext } from '@/context/context';
+import { FACTOR, ML_FACTOR } from '@/utils/constants';
 
 import RecordsList from '../RecordsList';
 import styles from './HomePage.module.css';
@@ -16,7 +17,10 @@ const HomePage = () => {
   const [amountDrank, setAmountDrank] = useState(0);
   const [amounts, setAmounts] = useState<number[]>([]);
   const [optimalAmount, setOptimalAmount] = useState(0);
-  const [currentUser, setCurrentUser] = useState<Record | Admin | null>(null);
+  const [currentUser, setCurrentUser] =
+    useState<BaseAuthStore['baseModel']>(null);
+
+  // TODO: Extract the code below to a custom hook
 
   useEffect(() => {
     if (getCurrentUser() === null) {
@@ -52,7 +56,7 @@ const HomePage = () => {
   // }, [currentUser, router]);
 
   useEffect(() => {
-    setOptimalAmount(Math.round(currentUser?.weight * 0.03 * 1000));
+    setOptimalAmount(Math.round(currentUser?.weight * FACTOR * ML_FACTOR));
   }, [currentUser]);
 
   return (

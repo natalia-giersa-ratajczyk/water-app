@@ -3,6 +3,7 @@ import Link from 'next/link';
 import RefreshingPana from '@/assets/images/Refreshing-pana.svg';
 import Button from '@/components/Button';
 import Container from '@/components/Container';
+import { LOGIN_ROUTE, REGISTER_ROUTE } from '@/utils/routes';
 
 import styles from './StartPage.module.css';
 
@@ -18,10 +19,10 @@ const StartPage = () => {
           </div>
           <div className={styles.actions}>
             <Button>
-              <Link href="/login">Zaloguj się</Link>
+              <Link href={LOGIN_ROUTE}>Zaloguj się</Link>
             </Button>
             <Button>
-              <Link href="/register">Zarejestruj się</Link>
+              <Link href={REGISTER_ROUTE}>Zarejestruj się</Link>
             </Button>
           </div>
         </div>

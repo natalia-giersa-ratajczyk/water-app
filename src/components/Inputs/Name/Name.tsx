@@ -2,12 +2,13 @@ import { forwardRef } from 'react';
 
 import Emoji from '@/assets/icons/Emoji.svg';
 
+import inputStyles from '../Inputs.module.css';
 import styles from './Name.module.css';
 import { NameProps } from './Name.types';
 
 const Name = forwardRef<HTMLInputElement, NameProps>(({ onChange }, ref) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={`${inputStyles.input} ${styles['name-input']}`}>
       <label htmlFor="name">Imię</label>
       <div className={styles['name-input']}>
         <Emoji className={styles.icon} />

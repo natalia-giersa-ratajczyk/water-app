@@ -12,12 +12,12 @@ const rubik = Rubik({ weight: 'variable', subsets: ['latin', 'latin-ext'] });
 const Modal = ({
   trigger,
   children,
-  modalTitle,
-  modalIsOpen,
-  openModalHandler,
+  title,
+  isOpen,
+  openHandler,
 }: ModalProps) => {
   return (
-    <Dialog.Root open={modalIsOpen} onOpenChange={openModalHandler}>
+    <Dialog.Root open={isOpen} onOpenChange={openHandler}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className={styles.overlay} />
@@ -26,7 +26,7 @@ const Modal = ({
           className={`${rubik.className} ${styles.wrapper}`}
         >
           <div className={styles.nav}>
-            <Dialog.Title className={styles.title}>{modalTitle}</Dialog.Title>
+            <Dialog.Title className={styles.title}>{title}</Dialog.Title>
             <Dialog.Close className={styles.close}>
               <Icon>
                 <Close />

@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
-import { z } from 'zod';
 
 import Error from '@/assets/icons/Error.svg';
 import Button from '@/components/Button';
@@ -13,29 +12,11 @@ import Email from '@/components/Inputs/Email';
 import Name from '@/components/Inputs/Name';
 import Password from '@/components/Inputs/Password';
 import { AppContext } from '@/context/context';
+import { LOGIN_ROUTE } from '@/utils/routes';
 
 import styles from './RegisterPage.module.css';
 import { RegisterPageForm } from './RegisterPage.types';
-
-const newUserSchema = z
-  .object({
-    name: z.string().min(1, { message: 'Imię jest wymagane' }),
-    email: z
-      .string()
-      .min(1, { message: 'Email jest wymagany' })
-      .email({ message: 'Niepoprawny email' }),
-    password: z
-      .string()
-      .min(1, { message: 'Hasło jest wymagane' })
-      .min(7, { message: 'Hasło powinno mieć co najmniej 7 znaków' }),
-    confirmedPassword: z.string(),
-  })
-  .refine((data) => data.confirmedPassword === data.password, {
-    message: 'Hasła nie są identyczne',
-    path: ['confirmedPassword'],
-  });
-
-type newUserSchema = z.infer<typeof newUserSchema>;
+import { NEW_USER_SCHEMA } from './RegisterPage.utils';
 
 const notify = () =>
   toast.error('Podany email istnieje już w bazie.', {
@@ -61,7 +42,7 @@ const RegisterPage = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<RegisterPageForm>({
-    resolver: zodResolver(newUserSchema),
+    resolver: zodResolver(NEW_USER_SCHEMA),
   });
 
   const submitHandler = async ({
@@ -89,7 +70,7 @@ const RegisterPage = () => {
       setIsLoading(false);
     }
 
-    router.replace('/login');
+    router.replace(LOGIN_ROUTE);
   };
 
   useEffect(() => {

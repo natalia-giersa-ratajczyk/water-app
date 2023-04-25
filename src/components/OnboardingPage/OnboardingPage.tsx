@@ -2,7 +2,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 import Error from '@/assets/icons/Error.svg';
 import Button from '@/components/Button';
@@ -11,37 +10,35 @@ import FemaleCheckbox from '@/components/Inputs/FemaleCheckbox';
 import MaleCheckbox from '@/components/Inputs/MaleCheckbox';
 import Weight from '@/components/Inputs/Weight';
 import { AppContext } from '@/context/context';
+import { HOME_ROUTE } from '@/utils/routes';
 
 import styles from './OnboardingPage.module.css';
 import { OnboardingPageForm } from './OnboardingPage.types';
+import { USER_DATA_SCHEMA } from './OnboardingPage.utils';
 
 const OnboardingPage = () => {
   const { updateUserData, getCurrentUser } = useContext(AppContext);
-  const [gender, setGender] = useState<null | boolean>(null);
+  const [gender, setGender] = useState<boolean | null>(null);
 
   const router = useRouter();
-
-  const userDataSchema = z.object({
-    weight: z.string().min(1, { message: 'Waga jest wymagana' }),
-    gender: z.string().min(1),
-  });
-
-  type userDataSchema = z.infer<typeof userDataSchema>;
 
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<OnboardingPageForm>({
-    resolver: zodResolver(userDataSchema),
+    resolver: zodResolver(USER_DATA_SCHEMA),
   });
+
+  const isFemaleChecked = gender !== null && !gender;
+  const isMaleChecked = gender !== null && gender;
 
   const submitHandler = ({ weight, gender }: OnboardingPageForm) => {
     const currentUser = getCurrentUser();
     const currentUserId = currentUser?.id ?? '';
     updateUserData(currentUserId, gender, weight);
 
-    router.replace('/home');
+    router.replace(HOME_ROUTE);
   };
 
   return (
@@ -57,7 +54,7 @@ const OnboardingPage = () => {
             <div className={styles.gender}>
               <FemaleCheckbox
                 {...register('gender')}
-                isChecked={gender !== null && !gender}
+                isChecked={isFemaleChecked}
                 onChange={(event) => {
                   register('gender').onChange(event);
                   setGender(false);
@@ -65,7 +62,7 @@ const OnboardingPage = () => {
               />
               <MaleCheckbox
                 {...register('gender')}
-                isChecked={gender !== null && gender}
+                isChecked={isMaleChecked}
                 onChange={(event) => {
                   register('gender').onChange(event);
                   setGender(true);

@@ -10,6 +10,15 @@ import Button from '@/components/Button';
 import Icon from '@/components/Icon';
 import Modal from '@/components/Modal';
 import { AppContext } from '@/context/context';
+import {
+  CACTUS_MAX,
+  CACTUS_MIN,
+  FLOWER_MAX,
+  FLOWER_MIN,
+  HEART_MAX,
+  HEART_MIN,
+  TROPHY_MIN,
+} from '@/utils/cardConstants';
 
 import styles from './Card.module.css';
 import { CardProps, ModalFormProps } from './Card.types';
@@ -31,10 +40,10 @@ const Card = ({ amountDrank, optimalAmount }: CardProps) => {
     setPercentage(Math.round((amountDrank / optimalAmount) * 100));
   }, [optimalAmount, amountDrank]);
 
-  const shouldShowCactus = percentage >= 0 && percentage <= 24;
-  const shouldShowFlower = percentage >= 25 && percentage <= 49;
-  const shouldShowHeart = percentage >= 50 && percentage <= 74;
-  const shouldShowTrophy = percentage >= 75;
+  const shouldShowCactus = percentage >= CACTUS_MIN && percentage <= CACTUS_MAX;
+  const shouldShowFlower = percentage >= FLOWER_MIN && percentage <= FLOWER_MAX;
+  const shouldShowHeart = percentage >= HEART_MIN && percentage <= HEART_MAX;
+  const shouldShowTrophy = percentage >= TROPHY_MIN;
 
   const submitHandler = async ({ drink, amount }: ModalFormProps) => {
     setIsLoading(true);
@@ -79,9 +88,9 @@ const Card = ({ amountDrank, optimalAmount }: CardProps) => {
             </Icon>
           </button>
         }
-        modalTitle="Dodaj nowy wpis"
-        modalIsOpen={open}
-        openModalHandler={setOpen}
+        title="Dodaj nowy wpis"
+        isOpen={open}
+        openHandler={setOpen}
       >
         <fieldset className={styles['input-container']}>
           <label htmlFor="drink">Napój</label>

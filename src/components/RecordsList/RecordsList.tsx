@@ -1,19 +1,13 @@
-import { Record } from 'pocketbase';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 import EmptyRecordsList from '@/assets/images/empty-records-list.svg';
 import RecordsItem from '@/components/RecordsItem';
 import { AppContext } from '@/context/context';
 
 import styles from './RecordsList.module.css';
-// import { RecordsListProps } from './RecordsList.types';
 
 const RecordsList = () => {
   const { records } = useContext(AppContext);
-
-  // const [records, setRecords] = useState<Record[]>([]);
-
-  // useEffect(() => {}, [records]);
 
   // TODO: reload data when records change
 
